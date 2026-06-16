@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /_build/
 
-Sitemap: https://gearhub.in/sitemap.xml
+Sitemap: https://pridepos.com/sitemap.xml

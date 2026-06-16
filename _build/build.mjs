@@ -1,4 +1,4 @@
-// Static site generator for the Gear Hub marketing site.
+// Static site generator for the Pride POS marketing site.
 // Assembles every sub-page from shared partials + a per-page body, writing clean-URL folders
 // (e.g. /features/gst-billing/index.html). Run: node web/_build/build.mjs
 import { writeFileSync, mkdirSync } from "node:fs";
@@ -7,11 +7,11 @@ import { dirname, join } from "node:path";
 import { head, NAV, FOOTER, CTA, crumbs } from "./partials.mjs";
 
 const WEB = join(dirname(fileURLToPath(import.meta.url)), "..");
-const ORG = { "@type": "Organization", "@id": "https://gearhub.in/#org", "name": "Gear Hub", "url": "https://gearhub.in/", "email": "hello@gearhub.in", "areaServed": "IN" };
+const ORG = { "@type": "Organization", "@id": "https://pridepos.com/#org", "name": "Pride POS", "url": "https://pridepos.com/", "email": "hello@pridepos.com", "areaServed": "IN" };
 
 // Helper builders ----------------------------------------------------------
 const featureLD = (name, desc, url) => ({
-  "@type": "SoftwareApplication", name: "Gear Hub", applicationCategory: "BusinessApplication",
+  "@type": "SoftwareApplication", name: "Pride POS", applicationCategory: "BusinessApplication",
   operatingSystem: "Web, Android, iOS, Windows, macOS", description: desc, url,
   offers: { "@type": "Offer", price: "499", priceCurrency: "INR" }
 });
@@ -20,7 +20,7 @@ const faqHtml = (items) => `<div class="faq">${items.map(([q, a], i) => `<detail
 const hero = (eyebrow, h1, lede, art = null, primary = "Start free trial") => {
   const copy = `<div class="reveal"${art ? "" : ' style="max-width:760px"'}>
   <span class="eyebrow">${eyebrow}</span><h1>${h1}</h1><p class="lede">${lede}</p>
-  <div class="hero-cta"><a class="btn primary lg" href="https://app.gearhub.in/?signup=1">${primary}</a><a class="btn lg" href="/pricing/">See pricing</a></div>
+  <div class="hero-cta"><a class="btn primary lg" href="https://app.pridepos.com/?signup=1">${primary}</a><a class="btn lg" href="/pricing/">See pricing</a></div>
 </div>`;
   if (!art) return `<section class="hero"><div class="container">${copy}</div></section>`;
   return `<section class="hero"><div class="container hero-grid">${copy}
@@ -39,7 +39,7 @@ const cmpCell = (v, gh = false) => {
   if (v === false) return `<td${cls}><span class="no">✕</span></td>`;
   return `<td${cls}><span class="partial">${v}</span></td>`;
 };
-// rows: [label, paper, spreadsheet/freeApp, generic, gearhub]
+// rows: [label, paper, spreadsheet/freeApp, generic, pridepos]
 const comparisonTable = (cols, rows) => `<div class="cmp-wrap"><table class="cmp">
   <thead><tr><th></th>${cols.map((c, i) => i === cols.length - 1
     ? `<th class="gh">${c}<small>YOU ARE HERE</small></th>` : `<th>${c}</th>`).join("")}</tr></thead>
@@ -127,7 +127,7 @@ const FEATURE_GROUPS = [
     { h: "Staff, roles & PINs", p: "Per-staff PIN logins and granular role-based permissions for every action." },
     { h: "Audit trail", p: "Append-only log of who did what — financial records are tamper-proof." },
     { h: "Works offline", p: "Bills, purchases, expenses and more queue locally and auto-sync on reconnect." },
-    { h: "Installable PWA", p: "Install Gear Hub like an app on any laptop, tablet or phone — no store needed." },
+    { h: "Installable PWA", p: "Install Pride POS like an app on any laptop, tablet or phone — no store needed." },
     { h: "Thermal & A4 printing", p: "ESC/POS thermal receipts with cash-drawer kick, or A4/A5 GST invoices." },
     { h: "Print designer", p: "Per-shop layout: choose format, toggle fields, add custom text, drag-and-drop blocks." },
     { h: "Backups & restore", p: "Automatic + nightly backups, integrity checks and one-click restore." },
@@ -141,11 +141,11 @@ const FEATURE_GROUPS = [
 
 PAGES.push({
   out: "features/index.html",
-  title: "Features — Everything Gear Hub Does for Your Shop",
-  description: "The complete Gear Hub feature set: GST billing & returns, multi-counter POS, inventory & multi-shop, service job cards, reports, offline mode, thermal printing and more.",
+  title: "Features — Everything Pride POS Does for Your Shop",
+  description: "The complete Pride POS feature set: GST billing & returns, multi-counter POS, inventory & multi-shop, service job cards, reports, offline mode, thermal printing and more.",
   keywords: "billing software features, POS features India, GST software features, inventory billing features, shop management software",
   crumb: [{ name: "Home", path: "/" }, { name: "Features", path: "/features/" }],
-  extraLD: [featureLD("Gear Hub", "Complete feature set: GST billing, POS, inventory, multi-shop, service, reports, offline, printing.", "https://gearhub.in/features/")],
+  extraLD: [featureLD("Pride POS", "Complete feature set: GST billing, POS, inventory, multi-shop, service, reports, offline, printing.", "https://pridepos.com/features/")],
   body: ({ cr }) => `${hero("Everything in one place", `One app for the <span class="hl">whole shop</span>.`, "Billing, GST returns, inventory, multi-shop, service job cards, reports, offline mode and printing — the entire back office a small Indian shop needs, with nothing bolted on.", { src: "/assets/art/hero-counter.svg", alt: "A shop counter with a GST invoice, a phone showing a UPI payment received, and a thermal receipt printing." })}
 <section class="section tight"><div class="container">${cr.html}
   <div class="stats">
@@ -170,10 +170,10 @@ ${FEATURE_GROUPS.map((g, gi) => `<section class="section ${gi % 2 ? "paper2" : "
   }).join("")}</div>
 </div></section>`).join("\n")}
 <section class="section"><div class="container">
-  <div class="sh center"><span class="eyebrow">How it compares</span><h2>Why shops switch to Gear Hub.</h2>
-    <p class="lede">Honest look at how Gear Hub stacks up against the ways small shops bill today.</p></div>
+  <div class="sh center"><span class="eyebrow">How it compares</span><h2>Why shops switch to Pride POS.</h2>
+    <p class="lede">Honest look at how Pride POS stacks up against the ways small shops bill today.</p></div>
   ${comparisonTable(
-    ["Paper bill book", "Spreadsheet / free app", "Generic billing app", "Gear Hub"],
+    ["Paper bill book", "Spreadsheet / free app", "Generic billing app", "Pride POS"],
     [
       ["GST tax split (CGST/SGST/IGST)", false, "Manual", true, true],
       ["e-Invoice IRN", false, false, "Add-on", true],
@@ -196,16 +196,16 @@ ${CTA}`
 // ── Feature: GST Billing ────────────────────────────────────────────────
 PAGES.push({
   out: "features/gst-billing/index.html",
-  title: "GST Billing Software for Indian Shops — Gear Hub",
+  title: "GST Billing Software for Indian Shops — Pride POS",
   description: "GST-compliant invoicing with HSN codes, automatic CGST/SGST/IGST split, e-invoice IRN and GSTR-1 & GSTR-3B exports. Create your first GST invoice in minutes.",
   keywords: "GST billing software, GST invoice software India, GSTR-1 export, e-invoice IRN, HSN code billing, CGST SGST IGST",
   crumb: [{ name: "Home", path: "/" }, { name: "Features", path: "/features/gst-billing/" }, { name: "GST Billing", path: "/features/gst-billing/" }],
-  extraLD: [featureLD("Gear Hub", "GST billing software with HSN codes, tax split, e-invoice IRN and GSTR exports.", "https://gearhub.in/features/gst-billing/")],
-  body: ({ cr }) => `${hero("Feature · GST billing", `GST invoices that <span class="hl">pass the audit</span>, every time.`, "HSN codes, the right tax split for every customer, e-invoice IRN and one-click GSTR exports — Gear Hub turns India's most tedious paperwork into a side-effect of billing.", { src: "/assets/art/gst.svg", alt: "A GST invoice with HSN codes and CGST/SGST tax split beside a verified e-invoice IRN badge." })}
+  extraLD: [featureLD("Pride POS", "GST billing software with HSN codes, tax split, e-invoice IRN and GSTR exports.", "https://pridepos.com/features/gst-billing/")],
+  body: ({ cr }) => `${hero("Feature · GST billing", `GST invoices that <span class="hl">pass the audit</span>, every time.`, "HSN codes, the right tax split for every customer, e-invoice IRN and one-click GSTR exports — Pride POS turns India's most tedious paperwork into a side-effect of billing.", { src: "/assets/art/gst.svg", alt: "A GST invoice with HSN codes and CGST/SGST tax split beside a verified e-invoice IRN badge." })}
 <section class="section"><div class="container">${cr.html}
   <div class="grid c2">
     <div><h2>The tax math, handled for you</h2>
-      <p>Pick a customer, add items, take payment. Gear Hub reads the customer's state and applies <strong>CGST + SGST</strong> for intra-state sales or <strong>IGST</strong> for inter-state — no manual toggles, no wrong filings.</p>
+      <p>Pick a customer, add items, take payment. Pride POS reads the customer's state and applies <strong>CGST + SGST</strong> for intra-state sales or <strong>IGST</strong> for inter-state — no manual toggles, no wrong filings.</p>
       <ul class="price" style="border:none;background:none;padding:0;margin:0;list-style:none">
         <li>HSN/SAC code on every line item</li>
         <li>Automatic CGST/SGST/IGST split by place of supply</li>
@@ -230,8 +230,8 @@ ${cardsSec("Filing season, sorted", "Returns without the spreadsheet gymnastics.
   ])}
 <section class="section"><div class="container" style="max-width:820px"><div class="sh center"><span class="eyebrow">Questions</span><h2>GST billing FAQ</h2></div>
 ${faqHtml([
-    ["Does Gear Hub generate e-invoice IRN?", "Yes — for invoices above the turnover threshold where IRN is mandatory, Gear Hub generates and prints the IRN and signed QR code."],
-    ["Can I file GSTR-1 directly from Gear Hub?", "Gear Hub produces the portal-compatible GSTR-1 JSON and an HSN summary you upload to the GST portal or hand to your CA. A one-click direct file is on the roadmap."],
+    ["Does Pride POS generate e-invoice IRN?", "Yes — for invoices above the turnover threshold where IRN is mandatory, Pride POS generates and prints the IRN and signed QR code."],
+    ["Can I file GSTR-1 directly from Pride POS?", "Pride POS produces the portal-compatible GSTR-1 JSON and an HSN summary you upload to the GST portal or hand to your CA. A one-click direct file is on the roadmap."],
     ["Does it handle inter-state sales correctly?", "Yes. The tax split is driven by the customer's place of supply, so inter-state sales automatically use IGST and intra-state use CGST + SGST."],
   ])}
 </div></section>
@@ -241,12 +241,12 @@ ${CTA}`
 // ── Feature: Multi-shop ─────────────────────────────────────────────────
 PAGES.push({
   out: "features/multi-shop/index.html",
-  title: "Multi-Shop Billing & Inventory Software — Gear Hub",
+  title: "Multi-Shop Billing & Inventory Software — Pride POS",
   description: "Run multiple outlets from one login. Per-shop invoice numbering, stock transfers between branches, per-outlet reports and owner-level oversight. Multi-store POS for India.",
   keywords: "multi shop billing software, multi store POS India, multi outlet inventory, branch stock transfer software, chain store billing",
   crumb: [{ name: "Home", path: "/" }, { name: "Features", path: "/features/multi-shop/" }, { name: "Multi-shop", path: "/features/multi-shop/" }],
-  extraLD: [featureLD("Gear Hub", "Multi-shop billing and inventory with per-outlet numbering, stock transfers and consolidated reports.", "https://gearhub.in/features/multi-shop/")],
-  body: ({ cr }) => `${hero("Feature · Multi-shop", `Two outlets or twenty — <span class="hl">one login</span>.`, "Open a second branch without opening a second headache. Gear Hub gives every outlet its own invoice series and stock, while you see the whole business from one owner view.", { src: "/assets/art/multishop.svg", alt: "Two shop storefronts connected to one owner dashboard with stock transferring between branches." })}
+  extraLD: [featureLD("Pride POS", "Multi-shop billing and inventory with per-outlet numbering, stock transfers and consolidated reports.", "https://pridepos.com/features/multi-shop/")],
+  body: ({ cr }) => `${hero("Feature · Multi-shop", `Two outlets or twenty — <span class="hl">one login</span>.`, "Open a second branch without opening a second headache. Pride POS gives every outlet its own invoice series and stock, while you see the whole business from one owner view.", { src: "/assets/art/multishop.svg", alt: "Two shop storefronts connected to one owner dashboard with stock transferring between branches." })}
 <section class="section"><div class="container">${cr.html}
 ${cardsSec("How multi-shop works", "Independent outlets, one source of truth.", [
     { h: "Per-shop numbering", p: "Each outlet gets its own invoice and estimate prefix and counter, so numbering never collides across branches." },
@@ -271,7 +271,7 @@ ${CTA}`
 const solution = ({ slug, title, description, keywords, h1, lede, kicker, cards, faq, art }) => ({
   out: `solutions/${slug}/index.html`, title, description, keywords,
   crumb: [{ name: "Home", path: "/" }, { name: "Solutions", path: `/solutions/${slug}/` }, { name: kicker, path: `/solutions/${slug}/` }],
-  extraLD: [featureLD("Gear Hub", description, `https://gearhub.in/solutions/${slug}/`), faqLD(faq)],
+  extraLD: [featureLD("Pride POS", description, `https://pridepos.com/solutions/${slug}/`), faqLD(faq)],
   body: ({ cr }) => `${hero(`For ${kicker.toLowerCase()}`, h1, lede, art || null)}
 <section class="section"><div class="container">${cr.html}<div class="grid c3">${cards.map((c, i) => `<article class="card${i % 2 ? " teal" : ""} reveal" style="animation-delay:${(i % 3) * .06}s"><h3>${c.h}</h3><p>${c.p}</p></article>`).join("")}</div></div></section>
 <section class="section paper2"><div class="container" style="max-width:820px"><div class="sh center"><span class="eyebrow">Questions</span><h2>FAQ</h2></div>${faqHtml(faq)}</div></section>
@@ -280,11 +280,11 @@ ${CTA}`
 
 PAGES.push(solution({
   slug: "cycle-shops", kicker: "Cycle shops",
-  title: "Billing Software for Cycle & Bike Shops in India — Gear Hub",
+  title: "Billing Software for Cycle & Bike Shops in India — Pride POS",
   description: "POS and GST billing built for cycle and bike shops: frame-number tracking, service job cards, AMC plans, spare-part assemblies and warranty-friendly invoices.",
   keywords: "cycle shop billing software, bike shop POS India, bicycle store billing, cycle service job card software, bike shop inventory",
   h1: `Billing built for <span class="hl">cycle shops</span>.`,
-  lede: "Gear Hub started behind a cycle-shop counter. Frame numbers, service cards, AMC plans and spare-part assemblies are first-class here — not bolted on.",
+  lede: "Pride POS started behind a cycle-shop counter. Frame numbers, service cards, AMC plans and spare-part assemblies are first-class here — not bolted on.",
   art: { src: "/assets/art/cycle.svg", alt: "A bicycle beside a service job card showing the frame number and a parts-and-labour invoice." },
   cards: [
     { h: "Frame & serial tracking", p: "Capture frame and serial numbers on the bill so warranty and service history are always one search away." },
@@ -297,17 +297,17 @@ PAGES.push(solution({
   faq: [
     ["Can I record a frame number on each sale?", "Yes — frame and serial numbers can be captured on the bill and are searchable later for warranty and service."],
     ["Does it handle service jobs and repairs?", "Yes. Open a job card, track its status, notify the customer, and bill parts plus labour in one invoice."],
-    ["Is it only for cycle shops?", "No — Gear Hub also fits general retail and service shops, but cycle shops get purpose-built features like assemblies and AMC plans."],
+    ["Is it only for cycle shops?", "No — Pride POS also fits general retail and service shops, but cycle shops get purpose-built features like assemblies and AMC plans."],
   ]
 }));
 
 PAGES.push(solution({
   slug: "retail-shops", kicker: "Retail shops",
-  title: "Retail Billing & Inventory Software for Indian Shops — Gear Hub",
+  title: "Retail Billing & Inventory Software for Indian Shops — Pride POS",
   description: "Fast GST billing and inventory for general retail: barcode scanning, bulk item import, multi-rate pricing, low-stock alerts and day-close reports.",
   keywords: "retail billing software India, retail POS software, shop inventory software, barcode billing software, kirana billing software",
   h1: `Counter billing that <span class="hl">keeps up</span> with retail.`,
-  lede: "Scan, bill, done. Gear Hub handles fast counter sales, large catalogues and the inventory truth a busy retail shop runs on.",
+  lede: "Scan, bill, done. Pride POS handles fast counter sales, large catalogues and the inventory truth a busy retail shop runs on.",
   art: { src: "/assets/art/retail.svg", alt: "A barcode being scanned into a point-of-sale screen, with shelved stock and a thermal receipt." },
   cards: [
     { h: "Barcode billing", p: "Plug in any USB/Bluetooth scanner and ring items straight into the cart — no fiddling." },
@@ -326,11 +326,11 @@ PAGES.push(solution({
 
 PAGES.push(solution({
   slug: "service-shops", kicker: "Service & repair shops",
-  title: "Job Card & Billing Software for Service & Repair Shops — Gear Hub",
+  title: "Job Card & Billing Software for Service & Repair Shops — Pride POS",
   description: "Job cards, status tracking, customer WhatsApp/SMS updates and parts-plus-labour GST invoices for service and repair businesses across India.",
   keywords: "service shop billing software, repair shop job card software, workshop billing India, parts and labour invoice, job card POS",
   h1: `Job cards to invoices, <span class="hl">without the paperwork</span>.`,
-  lede: "Take the job in, track it through, message the customer, and bill parts plus labour — Gear Hub runs the whole repair workflow on one screen.",
+  lede: "Take the job in, track it through, message the customer, and bill parts plus labour — Pride POS runs the whole repair workflow on one screen.",
   art: { src: "/assets/art/service.svg", alt: "A repair job moving through received, in-progress and ready stages, with a customer notification on a phone." },
   cards: [
     { h: "Digital job cards", p: "Log the item, the issue and the promised date; everything stays attached to the customer." },
@@ -350,12 +350,12 @@ PAGES.push(solution({
 // ── Pricing page ────────────────────────────────────────────────────────
 PAGES.push({
   out: "pricing/index.html",
-  title: "Pricing — Gear Hub GST Billing Software (₹499/month)",
+  title: "Pricing — Pride POS GST Billing Software (₹499/month)",
   description: "Simple, honest pricing: one Business plan at ₹499/month with unlimited bills, items, customers and outlets. 14-day free trial, no card required.",
-  keywords: "Gear Hub pricing, GST billing software price, billing software cost India, cheap POS software",
+  keywords: "Pride POS pricing, GST billing software price, billing software cost India, cheap POS software",
   crumb: [{ name: "Home", path: "/" }, { name: "Pricing", path: "/pricing/" }],
   extraLD: [
-    { "@type": "Product", name: "Gear Hub Business", description: "GST billing & POS software for Indian shops.", brand: { "@type": "Brand", name: "Gear Hub" }, offers: { "@type": "Offer", price: "499", priceCurrency: "INR", priceValidUntil: "2027-12-31", availability: "https://schema.org/InStock", url: "https://gearhub.in/pricing/" } },
+    { "@type": "Product", name: "Pride POS Business", description: "GST billing & POS software for Indian shops.", brand: { "@type": "Brand", name: "Pride POS" }, offers: { "@type": "Offer", price: "499", priceCurrency: "INR", priceValidUntil: "2027-12-31", availability: "https://schema.org/InStock", url: "https://pridepos.com/pricing/" } },
     faqLD([
       ["Is there a free trial?", "Yes — 14 days of full access with no credit card required. Your data carries over if you upgrade."],
       ["Are there any per-bill or setup charges?", "No. ₹499/month is the whole cost — unlimited bills, items, customers, staff and outlets."],
@@ -371,11 +371,11 @@ PAGES.push({
     <div class="price reveal"><div class="tier">Free trial</div><div class="amt">₹0 <small>/ 14 days</small></div>
       <p style="color:var(--ink-3);font-size:.95rem">Full access. No card. See if it fits your shop.</p>
       <ul><li>Every feature unlocked</li><li>Unlimited bills &amp; items</li><li>Your real data, kept if you upgrade</li><li>Email support</li></ul>
-      <a class="btn ink" href="https://app.gearhub.in/?signup=1" style="width:100%;justify-content:center">Start free trial</a></div>
+      <a class="btn ink" href="https://app.pridepos.com/?signup=1" style="width:100%;justify-content:center">Start free trial</a></div>
     <div class="price feature reveal" style="animation-delay:.08s"><span class="pill">Best value</span><div class="tier">Business</div><div class="amt">₹499 <small>/ month</small></div>
       <p style="color:var(--ink-3);font-size:.95rem">Everything you need to run a real shop.</p>
       <ul><li>Unlimited bills, items, customers</li><li>Unlimited outlets &amp; staff</li><li>GST returns + e-invoice IRN</li><li>Offline billing &amp; auto-sync</li><li>Thermal &amp; A4 printing</li><li>Priority support</li></ul>
-      <a class="btn primary" href="https://app.gearhub.in/?signup=1" style="width:100%;justify-content:center">Start free trial</a></div>
+      <a class="btn primary" href="https://app.pridepos.com/?signup=1" style="width:100%;justify-content:center">Start free trial</a></div>
   </div></div></section>
   <section class="section paper2"><div class="container" style="max-width:820px"><div class="sh center"><span class="eyebrow">Questions</span><h2>Pricing FAQ</h2></div>
   ${faqHtml([
@@ -412,7 +412,7 @@ const ARTICLES = [
     <h2>5. Returns need credit notes</h2>
     <p>When a customer returns goods, don't just delete the bill. Issue a <strong>credit note</strong> (CDNR for registered buyers, CDNUR for unregistered) so your output tax and filings stay correct.</p>
     <h2>The shortcut</h2>
-    <p>You can memorise all of this — or you can let your billing tool enforce it. <a href="/features/gst-billing/">Gear Hub's GST billing</a> stamps HSN codes, picks the right tax split by state, generates IRN where needed, and exports GSTR-1 and GSTR-3B every month. <a href="/pricing/">Try it free for 14 days →</a></p>`
+    <p>You can memorise all of this — or you can let your billing tool enforce it. <a href="/features/gst-billing/">Pride POS's GST billing</a> stamps HSN codes, picks the right tax split by state, generates IRN where needed, and exports GSTR-1 and GSTR-3B every month. <a href="/pricing/">Try it free for 14 days →</a></p>`
   },
   {
     slug: "how-to-choose-billing-software-india", cat: "Guides", read: "7 min read", date: "2026-06-02",
@@ -438,7 +438,7 @@ const ARTICLES = [
     <h2>6. Whose data is it?</h2>
     <p>Make sure you can <strong>export a full backup</strong> any time and that the vendor states a clear data-retention policy. If you can't get your data out, you don't really own your business records.</p>
     <h2>The short checklist</h2>
-    <p>GST automation ✓ · works offline ✓ · runs on your hardware ✓ · multi-shop ready ✓ · flat pricing ✓ · your data exportable ✓. Gear Hub was built to tick all six. <a href="/pricing/">See pricing →</a> or <a href="https://app.gearhub.in/?signup=1">start a free trial</a>.</p>`
+    <p>GST automation ✓ · works offline ✓ · runs on your hardware ✓ · multi-shop ready ✓ · flat pricing ✓ · your data exportable ✓. Pride POS was built to tick all six. <a href="/pricing/">See pricing →</a> or <a href="https://app.pridepos.com/?signup=1">start a free trial</a>.</p>`
   },
   {
     slug: "switch-from-paper-billing", cat: "Operations", read: "5 min read", date: "2026-06-02",
@@ -453,14 +453,14 @@ const ARTICLES = [
     <h2>Step 2 — Run paper and digital together for a week</h2>
     <p>For the first few days, write the paper bill <em>and</em> ring it into the software. It builds your staff's muscle memory and proves the totals match — without betting the shop on a brand-new system.</p>
     <h2>Step 3 — Plug in a thermal printer</h2>
-    <p>A ₹2,000 thermal printer turns the experience from "typing on a computer" into "press one button, receipt prints." It's the single change that makes staff actually adopt it. Gear Hub also supports a <strong>cash-drawer kick</strong> on print.</p>
+    <p>A ₹2,000 thermal printer turns the experience from "typing on a computer" into "press one button, receipt prints." It's the single change that makes staff actually adopt it. Pride POS also supports a <strong>cash-drawer kick</strong> on print.</p>
     <h2>Step 4 — Start the day with opening cash</h2>
     <p>Each morning, enter the cash in the drawer. Each evening, do a one-tap <strong>day-close</strong>. Now the drawer either balances or it doesn't — no more "the till feels short this week."</p>
     <h2>Step 5 — Let the reports earn their keep</h2>
     <p>After two weeks you'll have something the bill book never gave you: which items make the most margin, who owes you money, and a GST summary that's ready at filing time instead of a frantic month-end.</p>
     <blockquote>You're not throwing away the bill book's discipline — you're keeping it and adding a calculator, an accountant and a CCTV for your cash, all in one.</blockquote>
     <h2>The safety net</h2>
-    <p>Worried about losing data? Gear Hub takes <a href="/features/gst-billing/">automatic backups</a> and lets you download a full copy any time. Your records are safer digital than they ever were on paper. <a href="https://app.gearhub.in/?signup=1">Try it free for 14 days →</a></p>`
+    <p>Worried about losing data? Pride POS takes <a href="/features/gst-billing/">automatic backups</a> and lets you download a full copy any time. Your records are safer digital than they ever were on paper. <a href="https://app.pridepos.com/?signup=1">Try it free for 14 days →</a></p>`
   },
   {
     slug: "gstr1-vs-gstr3b-explained", cat: "GST", read: "6 min read", date: "2026-06-02",
@@ -482,7 +482,7 @@ const ARTICLES = [
     <h2>The trap: they must reconcile</h2>
     <p>The output tax you declare in <strong>GSTR-3B</strong> should match the total tax from the sales you listed in <strong>GSTR-1</strong>. A mismatch is the single most common reason for a GST notice. If you bill from a spreadsheet and summarise by hand, drift is almost guaranteed.</p>
     <h2>How software keeps them in sync</h2>
-    <p>When both returns are built from the <em>same</em> bills, they can't disagree. <a href="/features/gst-billing/">Gear Hub</a> generates the portal-ready <strong>GSTR-1</strong> and a <strong>GSTR-3B summary with ITC</strong> from your actual invoices and purchases — so the detail and the summary always tie out. <a href="/pricing/">See how →</a></p>`
+    <p>When both returns are built from the <em>same</em> bills, they can't disagree. <a href="/features/gst-billing/">Pride POS</a> generates the portal-ready <strong>GSTR-1</strong> and a <strong>GSTR-3B summary with ITC</strong> from your actual invoices and purchases — so the detail and the summary always tie out. <a href="/pricing/">See how →</a></p>`
   },
   {
     slug: "inventory-management-small-shops", cat: "Operations", read: "7 min read", date: "2026-06-02",
@@ -508,7 +508,7 @@ const ARTICLES = [
     <h2>One catalogue, even across branches</h2>
     <p>Running more than one outlet? Counting stock per branch on paper is hopeless. <a href="/features/multi-shop/">Per-shop stock with transfers</a> lets you see what's where and move it before you over-order. A shared item master means a price change is live everywhere at once.</p>
     <h2>Let billing update stock for you</h2>
-    <p>The cleanest inventory system is the one you don't maintain separately: when every sale and purchase adjusts stock automatically, your counts stay live without extra work. That's how Gear Hub does it. <a href="https://app.gearhub.in/?signup=1">Try it free →</a></p>`
+    <p>The cleanest inventory system is the one you don't maintain separately: when every sale and purchase adjusts stock automatically, your counts stay live without extra work. That's how Pride POS does it. <a href="https://app.pridepos.com/?signup=1">Try it free →</a></p>`
   },
   {
     slug: "thermal-printer-setup-guide", cat: "Hardware", read: "5 min read", date: "2026-06-02",
@@ -528,18 +528,18 @@ const ARTICLES = [
     <h2>Step 1 — Load the roll the right way</h2>
     <p>Thermal paper only prints on one side. If your receipts come out blank, the roll is in upside down — flip it. (Don't worry, you'll do this once and never forget.)</p>
     <h2>Step 2 — Connect and set as default</h2>
-    <p>Plug in USB (or pair Bluetooth), let the driver install, and set the printer as your device's default. For ESC/POS printers, Gear Hub can talk to them directly for crisp, fast receipts — no fiddly driver dialog each time.</p>
+    <p>Plug in USB (or pair Bluetooth), let the driver install, and set the printer as your device's default. For ESC/POS printers, Pride POS can talk to them directly for crisp, fast receipts — no fiddly driver dialog each time.</p>
     <h2>Step 3 — Match the paper size in print settings</h2>
-    <p>In Gear Hub's <strong>Print setup</strong>, choose the Thermal format and set 58mm or 80mm to match your printer. Toggle which fields show (logo, GSTIN, UPI QR) so the receipt looks exactly how you want.</p>
+    <p>In Pride POS's <strong>Print setup</strong>, choose the Thermal format and set 58mm or 80mm to match your printer. Toggle which fields show (logo, GSTIN, UPI QR) so the receipt looks exactly how you want.</p>
     <h2>Step 4 — Wire the cash drawer (optional)</h2>
-    <p>Most cash drawers connect to the printer with an <strong>RJ11/RJ12 cable</strong> and pop open on a "kick" signal when a receipt prints. Gear Hub sends the ESC/POS drawer-kick automatically — so cash sales open the till hands-free.</p>
+    <p>Most cash drawers connect to the printer with an <strong>RJ11/RJ12 cable</strong> and pop open on a "kick" signal when a receipt prints. Pride POS sends the ESC/POS drawer-kick automatically — so cash sales open the till hands-free.</p>
     <h2>Common gotchas</h2>
     <ul><li><strong>Blank receipts</strong> → paper roll upside down.</li>
     <li><strong>Faded print</strong> → cheap or old thermal paper; buy better rolls.</li>
     <li><strong>Wrong width / cut-off text</strong> → printer set to 80mm but receipt formatted for 58mm (or vice-versa).</li>
     <li><strong>Drawer won't open</strong> → it's powered from the printer; check the RJ-cable and that kick is enabled.</li></ul>
     <h2>That's it</h2>
-    <p>Once it's set up, billing becomes one tap → receipt → drawer opens. <a href="/features/gst-billing/">Gear Hub supports ESC/POS thermal printing</a> with a cash-drawer kick out of the box. <a href="https://app.gearhub.in/?signup=1">Start a free trial →</a></p>`
+    <p>Once it's set up, billing becomes one tap → receipt → drawer opens. <a href="/features/gst-billing/">Pride POS supports ESC/POS thermal printing</a> with a cash-drawer kick out of the box. <a href="https://app.pridepos.com/?signup=1">Start a free trial →</a></p>`
   },
 ];
 
@@ -554,12 +554,12 @@ const ARTICLE_ART = (a) => ({
 // Blog index page (cards auto-built from ARTICLES, newest first).
 PAGES.push({
   out: "blog/index.html",
-  title: "Gear Hub Blog — GST, billing & running a shop in India",
-  description: "Practical guides on GST billing, inventory, pricing and running a small retail or service shop in India, from the Gear Hub team.",
+  title: "Pride POS Blog — GST, billing & running a shop in India",
+  description: "Practical guides on GST billing, inventory, pricing and running a small retail or service shop in India, from the Pride POS team.",
   keywords: "GST blog India, small shop guides, billing tips, retail business India",
   crumb: [{ name: "Home", path: "/" }, { name: "Blog", path: "/blog/" }],
   body: ({ cr }) => `<section class="hero"><div class="container" style="max-width:760px"><div class="reveal">
-    <span class="eyebrow">The Gear Hub blog</span><h1>Running a shop, <span class="hl">made simpler</span>.</h1>
+    <span class="eyebrow">The Pride POS blog</span><h1>Running a shop, <span class="hl">made simpler</span>.</h1>
     <p class="lede">Plain-language guides on GST, billing, inventory and the day-to-day of running a small Indian shop.</p>
   </div></div></section>
   <section class="section tight"><div class="container">${cr.html}<div class="grid c3">
@@ -571,16 +571,16 @@ PAGES.push({
 for (const a of ARTICLES) {
   PAGES.push({
     out: `blog/${a.slug}/index.html`,
-    title: `${a.title} — Gear Hub`,
+    title: `${a.title} — Pride POS`,
     description: a.description,
     keywords: a.keywords,
     ogType: "article",
     crumb: [{ name: "Home", path: "/" }, { name: "Blog", path: "/blog/" }, { name: a.cat, path: "/blog/" }, { name: a.title, path: `/blog/${a.slug}/` }],
     extraLD: [{
       "@type": "Article", headline: a.title, description: a.description,
-      author: { "@type": "Organization", name: "Gear Hub" }, publisher: ORG,
-      datePublished: a.date, dateModified: a.date, image: `https://gearhub.in${ARTICLE_ART(a)}`,
-      mainEntityOfPage: `https://gearhub.in/blog/${a.slug}/`
+      author: { "@type": "Organization", name: "Pride POS" }, publisher: ORG,
+      datePublished: a.date, dateModified: a.date, image: `https://pridepos.com${ARTICLE_ART(a)}`,
+      mainEntityOfPage: `https://pridepos.com/blog/${a.slug}/`
     }],
     body: ({ cr }) => `<section class="section"><div class="container">${cr.html}
   <article class="prose reveal">
@@ -599,8 +599,8 @@ PAGES.push({
   out: "404.html",
   path: "/404.html",
   noindex: true,
-  title: "Page not found — Gear Hub",
-  description: "The page you were looking for doesn't exist. Head back to Gear Hub.",
+  title: "Page not found — Pride POS",
+  description: "The page you were looking for doesn't exist. Head back to Pride POS.",
   crumb: [{ name: "Home", path: "/" }, { name: "Not found", path: "/404.html" }],
   body: () => `<section class="hero"><div class="container center" style="max-width:640px;margin:0 auto"><div class="reveal">
     <span class="eyebrow">404</span>

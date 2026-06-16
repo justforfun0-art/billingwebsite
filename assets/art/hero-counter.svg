@@ -69,7 +69,7 @@
   <g filter="url(#hc-sh2)">
     <rect x="120" y="300" width="86" height="120" rx="6" fill="#fffdf8" stroke="#e2d8c4"/>
     <g font-family="monospace" font-size="7" fill="#9aa091">
-      <text x="163" y="318" text-anchor="middle" fill="#1d2520" font-size="8" font-weight="bold">GEAR HUB</text>
+      <text x="163" y="318" text-anchor="middle" fill="#1d2520" font-size="8" font-weight="bold">PRIDE POS</text>
       <line x1="130" y1="326" x2="196" y2="326" stroke="#e2d8c4" stroke-dasharray="2 2"/>
       <text x="130" y="340">Tyre tube</text><text x="196" y="340" text-anchor="end">120</text>
       <text x="130" y="352">Brake pad</text><text x="196" y="352" text-anchor="end">240</text>

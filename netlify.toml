@@ -1,4 +1,4 @@
-# Netlify deploy config for the Gear Hub marketing site.
+# Netlify deploy config for the Pride POS marketing site.
 # Publish this `web/` folder directly (it's pre-built static HTML — no build step).
 
 [build]

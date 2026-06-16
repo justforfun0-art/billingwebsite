@@ -39,7 +39,7 @@
     <rect x="252" y="150" width="88" height="130" rx="10" fill="#fffdf8"/>
     <rect x="262" y="166" width="68" height="44" rx="8" fill="#dcebe8"/>
     <circle cx="276" cy="182" r="7" fill="url(#s-tl)"/>
-    <text x="288" y="180" font-family="monospace" font-size="7" fill="#0a4843" font-weight="bold">Gear Hub</text>
+    <text x="288" y="180" font-family="monospace" font-size="7" fill="#0a4843" font-weight="bold">Pride POS</text>
     <text x="288" y="192" font-family="monospace" font-size="6" fill="#3c463f">Your repair is</text>
     <text x="288" y="201" font-family="monospace" font-size="6" fill="#3c463f">ready for pickup!</text>
     <rect x="262" y="222" width="68" height="20" rx="6" fill="#e8853f"/>

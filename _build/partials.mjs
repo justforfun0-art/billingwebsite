@@ -1,4 +1,4 @@
-// Shared partials for the Gear Hub marketing site generator.
+// Shared partials for the Pride POS marketing site generator.
 // head() builds the full <head> with per-page SEO; nav()/footer() are identical site-wide.
 
 export const FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -6,7 +6,7 @@ export const FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com"
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,600&family=Schibsted+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@500;600&display=swap" rel="stylesheet"/>`;
 
 export function head({ title, description, path, keywords = "", jsonld = [], ogType = "website", noindex = false }) {
-  const url = "https://gearhub.in" + path;
+  const url = "https://pridepos.com" + path;
   const ld = jsonld.length
     ? `\n<script type="application/ld+json">\n${JSON.stringify(jsonld.length === 1 ? jsonld[0] : { "@context": "https://schema.org", "@graph": jsonld }, null, 2)}\n</script>`
     : "";
@@ -22,16 +22,16 @@ export function head({ title, description, path, keywords = "", jsonld = [], ogT
 <meta name="theme-color" content="#1d2520"/>
 ${keywords ? `<meta name="keywords" content="${keywords}"/>` : ""}
 <meta property="og:type" content="${ogType}"/>
-<meta property="og:site_name" content="Gear Hub"/>
+<meta property="og:site_name" content="Pride POS"/>
 <meta property="og:title" content="${title}"/>
 <meta property="og:description" content="${description}"/>
 <meta property="og:url" content="${url}"/>
-<meta property="og:image" content="https://gearhub.in/assets/og-cover.png"/>
+<meta property="og:image" content="https://pridepos.com/assets/og-cover.png"/>
 <meta property="og:locale" content="en_IN"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="${title}"/>
 <meta name="twitter:description" content="${description}"/>
-<meta name="twitter:image" content="https://gearhub.in/assets/og-cover.png"/>
+<meta name="twitter:image" content="https://pridepos.com/assets/og-cover.png"/>
 ${FONTS}
 <link rel="stylesheet" href="/assets/site.css"/>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>${ld}
@@ -45,7 +45,7 @@ export const NAV = `<header class="nav">
   <div class="container nav-inner">
     <a class="brand" href="/">
       <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="8" cy="22" r="5"/><circle cx="24" cy="22" r="5"/><path d="M8 22 14 10h6l4 12M14 10h3M20 10l-4 12"/></svg></span>
-      Gear Hub
+      Pride POS
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="/features/">Features</a>
@@ -53,12 +53,12 @@ export const NAV = `<header class="nav">
       <a href="/solutions/cycle-shops/">For Cycle Shops</a>
       <a href="/pricing/">Pricing</a>
       <a href="/blog/">Blog</a>
-      <a class="nav-m-cta" href="https://app.gearhub.in/">Sign in</a>
-      <a class="nav-m-cta primary" href="https://app.gearhub.in/?signup=1">Start free</a>
+      <a class="nav-m-cta" href="https://app.pridepos.com/">Sign in</a>
+      <a class="nav-m-cta primary" href="https://app.pridepos.com/?signup=1">Start free</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn" href="https://app.gearhub.in/">Sign in</a>
-      <a class="btn primary" href="https://app.gearhub.in/?signup=1">Start free</a>
+      <a class="btn" href="https://app.pridepos.com/">Sign in</a>
+      <a class="btn primary" href="https://app.pridepos.com/?signup=1">Start free</a>
     </div>
     <label for="navtoggle" class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></label>
   </div>
@@ -68,7 +68,7 @@ export const FOOTER = `<footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div>
-        <a class="brand" href="/" style="margin-bottom:14px"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="8" cy="22" r="5"/><circle cx="24" cy="22" r="5"/><path d="M8 22 14 10h6l4 12M14 10h3M20 10l-4 12"/></svg></span> Gear Hub</a>
+        <a class="brand" href="/" style="margin-bottom:14px"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="8" cy="22" r="5"/><circle cx="24" cy="22" r="5"/><path d="M8 22 14 10h6l4 12M14 10h3M20 10l-4 12"/></svg></span> Pride POS</a>
         <p style="font-size:.92rem;color:var(--ink-3);max-width:30ch">GST billing &amp; POS, built in India for India's small shops.</p>
       </div>
       <div><h4>Product</h4><ul>
@@ -84,14 +84,14 @@ export const FOOTER = `<footer class="footer">
       </ul></div>
       <div><h4>Company</h4><ul>
         <li><a href="/blog/">Blog</a></li>
-        <li><a href="mailto:hello@gearhub.in">hello@gearhub.in</a></li>
+        <li><a href="mailto:hello@pridepos.com">hello@pridepos.com</a></li>
         <li><a href="/terms.html">Terms</a></li>
         <li><a href="/privacy.html">Privacy</a></li>
       </ul></div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Gear Hub. Made in India 🇮🇳</span>
-      <span class="mono">hello@gearhub.in</span>
+      <span>© 2026 Pride POS. Made in India 🇮🇳</span>
+      <span class="mono">hello@pridepos.com</span>
     </div>
   </div>
 </footer>
@@ -107,7 +107,7 @@ export function crumbs(trail) {
     "@type": "BreadcrumbList",
     "itemListElement": trail.map((t, i) => ({
       "@type": "ListItem", "position": i + 1, "name": t.name,
-      "item": "https://gearhub.in" + t.path
+      "item": "https://pridepos.com" + t.path
     }))
   };
   return { html, ld };
@@ -116,6 +116,6 @@ export function crumbs(trail) {
 export const CTA = `<section class="section"><div class="container"><div class="cta-band reveal">
   <span class="eyebrow" style="color:var(--saffron)">Free for 14 days</span>
   <h2>Try it on your next sale.</h2>
-  <p>No card, no installation. Set up your shop in five minutes and bill a real customer on Gear Hub today.</p>
-  <a class="btn primary lg" href="https://app.gearhub.in/?signup=1">Start your free trial</a>
+  <p>No card, no installation. Set up your shop in five minutes and bill a real customer on Pride POS today.</p>
+  <a class="btn primary lg" href="https://app.pridepos.com/?signup=1">Start your free trial</a>
 </div></div></section>`;
