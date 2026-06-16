@@ -39,7 +39,7 @@ const cmpCell = (v, gh = false) => {
   if (v === false) return `<td${cls}><span class="no">✕</span></td>`;
   return `<td${cls}><span class="partial">${v}</span></td>`;
 };
-// rows: [label, paper, spreadsheet/freeApp, generic, pridepos]
+// rows: [label, tally, marg, generic, pridepos]
 const comparisonTable = (cols, rows) => `<div class="cmp-wrap"><table class="cmp">
   <thead><tr><th></th>${cols.map((c, i) => i === cols.length - 1
     ? `<th class="gh">${c}<small>YOU ARE HERE</small></th>` : `<th>${c}</th>`).join("")}</tr></thead>
@@ -173,22 +173,23 @@ ${FEATURE_GROUPS.map((g, gi) => `<section class="section ${gi % 2 ? "paper2" : "
   <div class="sh center"><span class="eyebrow">How it compares</span><h2>Why shops switch to Pride POS.</h2>
     <p class="lede">Honest look at how Pride POS stacks up against the ways small shops bill today.</p></div>
   ${comparisonTable(
-    ["Paper bill book", "Spreadsheet / free app", "Generic billing app", "Pride POS"],
+    ["Tally", "Marg", "Generic billing app", "Pride POS"],
     [
-      ["GST tax split (CGST/SGST/IGST)", false, "Manual", true, true],
-      ["e-Invoice IRN", false, false, "Add-on", true],
-      ["GSTR-1 & GSTR-3B exports", false, "Manual", "Higher tier", true],
-      ["Live inventory", false, "Manual", true, true],
-      ["Multi-shop & stock transfer", false, false, "Higher tier", true],
-      ["Service job cards", false, false, "Rare", true],
-      ["Works offline", true, false, "Rare", true],
-      ["Thermal + cash drawer", false, "Partial", true, true],
-      ["Day-close & profit reports", false, "Manual", "Partial", true],
-      ["Audit trail (tamper-proof)", false, false, "Partial", true],
-      ["All-inclusive price", "—", "Free*", "Per-bill / tiers", "₹499 flat"],
+      ["GST tax split (CGST/SGST/IGST)", true, true, true, true],
+      ["e-Invoice IRN", true, true, "Add-on", true],
+      ["GSTR-1 & GSTR-3B exports", true, true, "Higher tier", true],
+      ["Live inventory", true, true, true, true],
+      ["Multi-shop & stock transfer", "Higher tier", "Add-on", "Higher tier", true],
+      ["Service job cards", false, "Rare", "Rare", true],
+      ["Works offline", true, true, "Rare", true],
+      ["Multi-counter POS + customer display", "Partial", "Partial", "Partial", true],
+      ["Thermal + cash drawer", "Partial", true, true, true],
+      ["Runs in any browser — no install", false, false, "Partial", true],
+      ["Audit trail (tamper-proof)", "Partial", "Partial", "Partial", true],
+      ["All-inclusive price", "License + AMC", "License + AMC", "Per-bill / tiers", "₹499 flat"],
     ]
   )}
-  <p class="cmp-note">* Free apps meter usage, cap features, or monetise your data. Comparison reflects typical offerings, not any specific product.</p>
+  <p class="cmp-note">Comparison reflects typical offerings of each category, not any specific product version. Tally and Marg are trademarks of their respective owners; Pride POS is independent and not affiliated with either.</p>
 </div></section>
 ${CTA}`
 });
