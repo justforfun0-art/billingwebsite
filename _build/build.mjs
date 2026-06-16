@@ -72,7 +72,8 @@ const FEATURE_GROUPS = [
     { h: "Park & resume bills", p: "Hold a half-finished bill, serve the next customer, resume later." },
     { h: "Bundles & combos", p: "Sell pre-set combos that expand into their component lines at the counter." },
     { h: "Line & bill discounts", p: "Flat or percentage discounts per line or on the whole bill." },
-    { h: "UPI scan-to-pay", p: "Show a dynamic UPI QR at checkout; PhonePe gateway auto-confirms (when enabled)." },
+    { h: "Integrated UPI payments", p: "Show a dynamic UPI QR at checkout and the bill marks itself paid the moment money lands — no manual matching, no missed entries." },
+    { h: "UPI payment links", p: "Send a customer a UPI link over WhatsApp or SMS to collect a due or a remote order; the payment updates the bill automatically." },
     { h: "Split payments", p: "Take cash, UPI, card, bank and credit on a single bill." },
     { h: "Customer display", p: "Mirror the cart to a second tablet screen facing the customer." },
     { h: "Live cross-device sync", p: "Bill on the phone, see it on the shop computer instantly — every device stays in step." },
@@ -187,11 +188,11 @@ ${FEATURE_GROUPS.map((g, gi) => `<section class="section ${gi % 2 ? "paper2" : "
       ["Live cross-device sync", false, false, "Rare", true],
       ["Multi-counter POS + customer display", "Partial", "Partial", "Partial", true],
       ["WhatsApp invoices & payment reminders", false, "Add-on", "Rare", true],
-      ["UPI scan-to-pay at checkout", false, "Partial", "Partial", true],
+      ["Integrated UPI — auto-confirm + payment links", false, "Partial", "Partial", true],
       ["Multi-language receipts (6 languages)", false, "Partial", false, true],
       ["Thermal + cash drawer", "Partial", true, true, true],
       ["Audit trail (tamper-proof)", "Partial", "Partial", "Partial", true],
-      ["Free trial, no card", false, false, "Limited", "14 days"],
+      ["Free trial, no card", false, false, "Limited", "5 days"],
       ["Price", "License + AMC", "License + AMC", "Per-bill / tiers", "₹499/mo flat"],
     ]
   )}
@@ -358,13 +359,13 @@ PAGES.push(solution({
 PAGES.push({
   out: "pricing/index.html",
   title: "Pricing — Pride POS GST Billing Software (₹499/month)",
-  description: "Simple, honest pricing: one Business plan at ₹499/month with unlimited bills, items, customers and outlets. 14-day free trial, no card required.",
+  description: "Simple, honest pricing: one Business plan at ₹499/month with unlimited bills, items, customers and outlets. 5-day free trial, no card required.",
   keywords: "Pride POS pricing, GST billing software price, billing software cost India, cheap POS software",
   crumb: [{ name: "Home", path: "/" }, { name: "Pricing", path: "/pricing/" }],
   extraLD: [
     { "@type": "Product", name: "Pride POS Business", description: "GST billing & POS software for Indian shops.", brand: { "@type": "Brand", name: "Pride POS" }, offers: { "@type": "Offer", price: "499", priceCurrency: "INR", priceValidUntil: "2027-12-31", availability: "https://schema.org/InStock", url: "https://pridepos.com/pricing/" } },
     faqLD([
-      ["Is there a free trial?", "Yes — 14 days of full access with no credit card required. Your data carries over if you upgrade."],
+      ["Is there a free trial?", "Yes — 5 days of full access with no credit card required. Your data carries over if you upgrade."],
       ["Are there any per-bill or setup charges?", "No. ₹499/month is the whole cost — unlimited bills, items, customers, staff and outlets."],
       ["Can I cancel anytime?", "Yes. Cancel whenever you like; your account pauses and data is kept for 30 days so you can resume."],
     ])
@@ -375,18 +376,18 @@ PAGES.push({
   </div></div></section>
   <section class="section tight"><div class="container">${cr.html}
   <div class="price-grid">
-    <div class="price reveal"><div class="tier">Free trial</div><div class="amt">₹0 <small>/ 14 days</small></div>
+    <div class="price reveal"><div class="tier">Free trial</div><div class="amt">₹0 <small>/ 5 days</small></div>
       <p style="color:var(--ink-3);font-size:.95rem">Full access. No card. See if it fits your shop.</p>
       <ul><li>Every feature unlocked</li><li>Unlimited bills &amp; items</li><li>Your real data, kept if you upgrade</li><li>Email support</li></ul>
       <a class="btn ink" href="https://app.pridepos.com/?signup=1" style="width:100%;justify-content:center">Start free trial</a></div>
     <div class="price feature reveal" style="animation-delay:.08s"><span class="pill">Best value</span><div class="tier">Business</div><div class="amt">₹499 <small>/ month</small></div>
       <p style="color:var(--ink-3);font-size:.95rem">Everything you need to run a real shop.</p>
-      <ul><li>Unlimited bills, items, customers</li><li>Unlimited outlets &amp; staff</li><li>GST returns + e-invoice IRN</li><li>Offline billing &amp; auto-sync</li><li>Thermal &amp; A4 printing</li><li>Priority support</li></ul>
+      <ul><li>Unlimited bills, items, customers</li><li>Unlimited outlets &amp; staff</li><li>GST returns + e-invoice IRN</li><li>Integrated UPI payments</li><li>Offline billing &amp; auto-sync</li><li>Thermal &amp; A4 printing</li><li>Priority support</li></ul>
       <a class="btn primary" href="https://app.pridepos.com/?signup=1" style="width:100%;justify-content:center">Start free trial</a></div>
   </div></div></section>
   <section class="section paper2"><div class="container" style="max-width:820px"><div class="sh center"><span class="eyebrow">Questions</span><h2>Pricing FAQ</h2></div>
   ${faqHtml([
-    ["Is there a free trial?", "Yes — 14 days of full access with no credit card required. Your data carries over if you upgrade."],
+    ["Is there a free trial?", "Yes — 5 days of full access with no credit card required. Your data carries over if you upgrade."],
     ["Are there any per-bill or setup charges?", "No. ₹499/month is the whole cost — unlimited bills, items, customers, staff and outlets."],
     ["Can I cancel anytime?", "Yes. Cancel whenever you like; your account pauses and your data is kept for 30 days so you can resume."],
     ["How do I pay?", "Securely online via Razorpay — UPI, cards or net banking. Billing is monthly and you can stop anytime."],
@@ -419,7 +420,7 @@ const ARTICLES = [
     <h2>5. Returns need credit notes</h2>
     <p>When a customer returns goods, don't just delete the bill. Issue a <strong>credit note</strong> (CDNR for registered buyers, CDNUR for unregistered) so your output tax and filings stay correct.</p>
     <h2>The shortcut</h2>
-    <p>You can memorise all of this — or you can let your billing tool enforce it. <a href="/features/gst-billing/">Pride POS's GST billing</a> stamps HSN codes, picks the right tax split by state, generates IRN where needed, and exports GSTR-1 and GSTR-3B every month. <a href="/pricing/">Try it free for 14 days →</a></p>`
+    <p>You can memorise all of this — or you can let your billing tool enforce it. <a href="/features/gst-billing/">Pride POS's GST billing</a> stamps HSN codes, picks the right tax split by state, generates IRN where needed, and exports GSTR-1 and GSTR-3B every month. <a href="/pricing/">Try it free for 5 days →</a></p>`
   },
   {
     slug: "how-to-choose-billing-software-india", cat: "Guides", read: "7 min read", date: "2026-06-02",
@@ -467,7 +468,7 @@ const ARTICLES = [
     <p>After two weeks you'll have something the bill book never gave you: which items make the most margin, who owes you money, and a GST summary that's ready at filing time instead of a frantic month-end.</p>
     <blockquote>You're not throwing away the bill book's discipline — you're keeping it and adding a calculator, an accountant and a CCTV for your cash, all in one.</blockquote>
     <h2>The safety net</h2>
-    <p>Worried about losing data? Pride POS takes <a href="/features/gst-billing/">automatic backups</a> and lets you download a full copy any time. Your records are safer digital than they ever were on paper. <a href="https://app.pridepos.com/?signup=1">Try it free for 14 days →</a></p>`
+    <p>Worried about losing data? Pride POS takes <a href="/features/gst-billing/">automatic backups</a> and lets you download a full copy any time. Your records are safer digital than they ever were on paper. <a href="https://app.pridepos.com/?signup=1">Try it free for 5 days →</a></p>`
   },
   {
     slug: "gstr1-vs-gstr3b-explained", cat: "GST", read: "6 min read", date: "2026-06-02",
