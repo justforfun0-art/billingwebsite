@@ -171,7 +171,7 @@ ${FEATURE_GROUPS.map((g, gi) => `<section class="section ${gi % 2 ? "paper2" : "
 </div></section>`).join("\n")}
 <section class="section"><div class="container">
   <div class="sh center"><span class="eyebrow">How it compares</span><h2>Why shops switch to Pride POS.</h2>
-    <p class="lede">Honest look at how Pride POS stacks up against the ways small shops bill today.</p></div>
+    <p class="lede">Honest look at how Pride POS stacks up against Tally, Marg and generic billing apps — cloud-native, online or offline, on any device, for one flat ₹499/month.</p></div>
   ${comparisonTable(
     ["Tally", "Marg", "Generic billing app", "Pride POS"],
     [
@@ -181,12 +181,18 @@ ${FEATURE_GROUPS.map((g, gi) => `<section class="section ${gi % 2 ? "paper2" : "
       ["Live inventory", true, true, true, true],
       ["Multi-shop & stock transfer", "Higher tier", "Add-on", "Higher tier", true],
       ["Service job cards", false, "Rare", "Rare", true],
-      ["Works offline", true, true, "Rare", true],
+      ["Online / cloud billing — any device", false, false, "Partial", true],
+      ["Runs in a browser — no install", false, false, "Partial", true],
+      ["Offline billing + auto-sync", "Desktop only", "Desktop only", "Rare", true],
+      ["Live cross-device sync", false, false, "Rare", true],
       ["Multi-counter POS + customer display", "Partial", "Partial", "Partial", true],
+      ["WhatsApp invoices & payment reminders", false, "Add-on", "Rare", true],
+      ["UPI scan-to-pay at checkout", false, "Partial", "Partial", true],
+      ["Multi-language receipts (6 languages)", false, "Partial", false, true],
       ["Thermal + cash drawer", "Partial", true, true, true],
-      ["Runs in any browser — no install", false, false, "Partial", true],
       ["Audit trail (tamper-proof)", "Partial", "Partial", "Partial", true],
-      ["All-inclusive price", "License + AMC", "License + AMC", "Per-bill / tiers", "₹499 flat"],
+      ["Free trial, no card", false, false, "Limited", "14 days"],
+      ["Price", "License + AMC", "License + AMC", "Per-bill / tiers", "₹499/mo flat"],
     ]
   )}
   <p class="cmp-note">Comparison reflects typical offerings of each category, not any specific product version. Tally and Marg are trademarks of their respective owners; Pride POS is independent and not affiliated with either.</p>
