@@ -158,7 +158,10 @@ p { margin: 0 0 1rem; color: var(--ink-2); }
 .grid.c2 { grid-template-columns: repeat(2, 1fr); }
 .grid.c4 { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 900px) { .grid.c3, .grid.c4 { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 620px) { .grid.c2, .grid.c3, .grid.c4 { grid-template-columns: 1fr; } }
+@media (max-width: 620px) { .grid.c2 { grid-template-columns: 1fr; } }
+/* Keep the feature/solution cards 2-up on phones so the page stays compact;
+   only collapse to a single column on very narrow (<=360px) screens. */
+@media (max-width: 360px) { .grid.c3, .grid.c4 { grid-template-columns: 1fr; } }
 
 .card { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 26px; transition: transform .18s, box-shadow .2s, border-color .2s; }
 .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--line-strong); }
@@ -293,25 +296,38 @@ a.card:hover .card-more { text-decoration: underline; }
   .footer-bottom { flex-direction: column; gap: 6px; }
 }
 
-/* Phone */
+/* Phone — compact spacing so the page scrolls less. */
 @media (max-width: 520px) {
   h1 { font-size: clamp(2.1rem, 9vw, 2.8rem); }
   h2 { font-size: clamp(1.7rem, 7vw, 2.1rem); }
   .container { padding: 0 16px; }
-  .section { padding: 52px 0; }
-  .hero { padding: 36px 0 40px; }
-  .card { padding: 22px; }
+  .section { padding: 38px 0; }
+  .section.tight { padding: 30px 0; }
+  .hero { padding: 28px 0 32px; }
+  .sh { margin-bottom: 22px; }
+  /* Two-up cards on phones: tighter padding + gap so they don't run tall. */
+  .grid { gap: 14px; }
+  .card { padding: 16px; }
+  .card .ic { width: 38px; height: 38px; margin-bottom: 10px; }
+  .card h3 { margin-bottom: 6px; font-size: 1.02rem; }
+  .card p { font-size: .9rem; }
   .price { padding: 24px; }
-  .hero-trust { gap: 14px; font-size: .85rem; }
-  .trust-strip { gap: 14px 20px; font-size: .78rem; }
-  .stats { gap: 14px; }
-  .stat b { font-size: 2.2rem; }
+  .hero-cta { margin-top: 22px; }
+  .hero-trust { margin-top: 18px; gap: 12px; font-size: .85rem; }
+  .trust-strip { gap: 12px 18px; font-size: .78rem; }
+  .stats { gap: 12px; }
+  .stat b { font-size: 2.1rem; }
   /* invoice card (home/feature mock) shouldn't tilt off-screen on tiny widths */
   .invoice-card { transform: none; padding: 20px; }
-  .faq summary { padding: 16px 18px; font-size: 1rem; }
+  .faq summary { padding: 14px 16px; font-size: 1rem; }
   .prose { font-size: 1rem; }
   .prose blockquote { font-size: 1.12rem; }
   .crumbs { font-size: .74rem; }
+}
+
+/* Very narrow phones (<=360px): cards go single-column, so restore a touch more padding. */
+@media (max-width: 360px) {
+  .card { padding: 18px 20px; }
 }
 
 /* Prevent any horizontal overflow on very small screens */
