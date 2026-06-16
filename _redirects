@@ -1,0 +1,6 @@
+# Portable redirect rules — read by Cloudflare Pages and Netlify.
+# Old single-page landing → new home (preserves any existing inbound links).
+/landing.html   /   301
+
+# SPA-style fallback is NOT wanted here (this is a multi-page static site); the host's
+# default 404 handling + 404.html covers unknown routes.

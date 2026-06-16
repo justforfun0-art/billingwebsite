@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" role="img" aria-label="A bicycle beside a service job card showing the frame number and a parts-and-labour invoice.">
+  <defs>
+    <linearGradient id="c-pap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffdf8"/><stop offset="1" stop-color="#f4ecdc"/></linearGradient>
+    <linearGradient id="c-saff" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8853f"/><stop offset="1" stop-color="#bf5e1f"/></linearGradient>
+    <filter id="c-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="7" stdDeviation="11" flood-color="#1d2520" flood-opacity="0.16"/></filter>
+  </defs>
+  <circle cx="110" cy="90" r="100" fill="#d9712b" opacity="0.07"/>
+  <circle cx="330" cy="280" r="90" fill="#0f5e57" opacity="0.06"/>
+  <!-- bicycle -->
+  <g transform="translate(40 120)" stroke="#1d2520" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="36" cy="120" r="42"/><circle cx="186" cy="120" r="42"/>
+    <path d="M36 120 L96 120 L132 54 L186 120 M96 120 L132 54 M132 54 L150 54 M70 120 L120 60"/>
+    <path d="M150 54 l16 -10" stroke="#bf5e1f"/>
+    <circle cx="111" cy="120" r="9" fill="#1d2520" stroke="none"/>
+  </g>
+  <!-- spokes accent -->
+  <g stroke="#d3c4a6" stroke-width="2">
+    <line x1="76" y1="240" x2="76" y2="200"/><line x1="226" y1="240" x2="226" y2="200"/>
+  </g>
+  <!-- job card -->
+  <g filter="url(#c-sh)" transform="rotate(4 290 150)">
+    <rect x="230" y="60" width="140" height="180" rx="12" fill="url(#c-pap)" stroke="#e2d8c4"/>
+    <rect x="230" y="60" width="140" height="34" rx="12" fill="url(#c-saff)"/><rect x="230" y="82" width="140" height="12" fill="#bf5e1f"/>
+    <text x="248" y="82" font-family="'Schibsted Grotesk',sans-serif" font-size="12" fill="#fff" font-weight="bold">Job Card</text>
+    <g font-family="monospace" font-size="9" fill="#6b7269">
+      <text x="248" y="118">Frame #</text><text x="352" y="118" text-anchor="end" fill="#1d2520">CYC-90213</text>
+      <text x="248" y="140">Issue: gears</text>
+      <line x1="248" y1="150" x2="352" y2="150" stroke="#e2d8c4" stroke-dasharray="3 3"/>
+      <text x="248" y="170">Parts</text><text x="352" y="170" text-anchor="end" fill="#3c463f">₹450</text>
+      <text x="248" y="188">Labour</text><text x="352" y="188" text-anchor="end" fill="#3c463f">₹150</text>
+      <line x1="248" y1="200" x2="352" y2="200" stroke="#1d2520" stroke-width="1.5"/>
+    </g>
+    <text x="248" y="222" font-family="'Schibsted Grotesk',sans-serif" font-size="11" font-weight="bold" fill="#1d2520">Total</text>
+    <text x="352" y="222" text-anchor="end" font-family="monospace" font-size="13" font-weight="bold" fill="#bf5e1f">₹600</text>
+  </g>
+</svg>

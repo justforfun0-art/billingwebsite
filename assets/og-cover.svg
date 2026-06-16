@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Gear Hub — GST billing and POS software for Indian shops.">
+  <defs>
+    <linearGradient id="og-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7f2e9"/><stop offset="1" stop-color="#efe7d6"/></linearGradient>
+    <linearGradient id="og-saff" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8853f"/><stop offset="1" stop-color="#bf5e1f"/></linearGradient>
+    <linearGradient id="og-pap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffdf8"/><stop offset="1" stop-color="#f4ecdc"/></linearGradient>
+    <filter id="og-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="22" flood-color="#1d2520" flood-opacity="0.22"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#og-bg)"/>
+  <circle cx="1050" cy="120" r="260" fill="#d9712b" opacity="0.08"/>
+  <circle cx="120" cy="560" r="240" fill="#0f5e57" opacity="0.06"/>
+
+  <!-- brand -->
+  <g transform="translate(80 80)">
+    <rect width="60" height="60" rx="14" fill="#1d2520"/>
+    <g transform="translate(11 13)" fill="none" stroke="#f7f2e9" stroke-width="3.2" stroke-linecap="round"><circle cx="7" cy="20" r="7"/><circle cx="29" cy="20" r="7"/><path d="M7 20 13 4h8l6 16M13 4h4M25 4l-6 16"/></g>
+    <text x="78" y="42" font-family="Georgia,serif" font-size="34" fill="#1d2520" font-weight="bold">Gear Hub</text>
+  </g>
+
+  <!-- headline -->
+  <g transform="translate(80 230)">
+    <text font-family="Georgia,serif" font-size="74" fill="#1d2520" font-weight="bold"><tspan x="0" y="0">GST billing for</tspan><tspan x="0" y="86" fill="#bf5e1f" font-style="italic">Indian shops.</tspan></text>
+    <text x="0" y="170" font-family="'Schibsted Grotesk',Arial,sans-serif" font-size="29" fill="#3c463f">POS · multi-shop · offline · GSTR &amp; e-invoice. From ₹499/month.</text>
+    <g transform="translate(0 210)">
+      <rect width="270" height="62" rx="31" fill="url(#og-saff)"/>
+      <text x="135" y="40" text-anchor="middle" font-family="'Schibsted Grotesk',Arial,sans-serif" font-size="23" fill="#fff" font-weight="bold">Start free for 14 days</text>
+    </g>
+  </g>
+
+  <!-- invoice mock -->
+  <g filter="url(#og-sh)" transform="rotate(4 980 330)">
+    <rect x="850" y="180" width="280" height="320" rx="20" fill="url(#og-pap)" stroke="#e2d8c4"/>
+    <rect x="850" y="180" width="280" height="62" rx="20" fill="#1d2520"/><rect x="850" y="216" width="280" height="26" fill="#1d2520"/>
+    <text x="878" y="222" font-family="Georgia,serif" font-size="24" fill="#f7f2e9" font-weight="bold">Tax Invoice</text>
+    <rect x="1058" y="198" width="52" height="26" rx="7" fill="#0f5e57"/><text x="1084" y="216" text-anchor="middle" font-family="monospace" font-size="13" fill="#fff">GST</text>
+    <g font-family="monospace" font-size="15" fill="#6b7269">
+      <text x="878" y="290">Item · HSN 8712</text><text x="1102" y="290" text-anchor="end" fill="#3c463f">18,400</text>
+      <text x="878" y="326">CGST + SGST 18%</text><text x="1102" y="326" text-anchor="end" fill="#3c463f">3,375</text>
+      <line x1="878" y1="350" x2="1102" y2="350" stroke="#1d2520" stroke-width="2"/>
+    </g>
+    <text x="878" y="392" font-family="'Schibsted Grotesk',Arial,sans-serif" font-size="20" fill="#1d2520" font-weight="bold">Grand total</text>
+    <text x="1102" y="392" text-anchor="end" font-family="monospace" font-size="24" fill="#bf5e1f" font-weight="bold">22,125</text>
+    <g transform="translate(878 420)"><circle cx="14" cy="14" r="14" fill="#0f5e57"/><path d="M7 14 l5 5 9 -11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="38" y="20" font-family="monospace" font-size="14" fill="#0a4843">Paid · UPI</text></g>
+  </g>
+</svg>

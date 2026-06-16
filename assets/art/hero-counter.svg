@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 460" role="img" aria-label="A shop counter scene: a tax invoice, a phone showing a paid UPI payment, and a thermal receipt printing.">
+  <defs>
+    <linearGradient id="hc-paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdf8"/><stop offset="1" stop-color="#f4ecdc"/>
+    </linearGradient>
+    <linearGradient id="hc-saff" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e8853f"/><stop offset="1" stop-color="#bf5e1f"/>
+    </linearGradient>
+    <linearGradient id="hc-teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#13716a"/><stop offset="1" stop-color="#0a4843"/>
+    </linearGradient>
+    <filter id="hc-sh" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#1d2520" flood-opacity="0.18"/>
+    </filter>
+    <filter id="hc-sh2" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#1d2520" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <!-- ambient blobs -->
+  <circle cx="430" cy="80" r="120" fill="#d9712b" opacity="0.07"/>
+  <circle cx="80" cy="380" r="130" fill="#0f5e57" opacity="0.06"/>
+
+  <!-- counter surface -->
+  <rect x="20" y="372" width="480" height="64" rx="14" fill="#e7dcc6"/>
+  <rect x="20" y="372" width="480" height="14" rx="7" fill="#d8c9aa"/>
+
+  <!-- main invoice card -->
+  <g filter="url(#hc-sh)" transform="rotate(-3 175 210)">
+    <rect x="70" y="70" width="210" height="290" rx="16" fill="url(#hc-paper)" stroke="#e2d8c4"/>
+    <!-- header bar -->
+    <rect x="70" y="70" width="210" height="58" rx="16" fill="#1d2520"/>
+    <rect x="70" y="112" width="210" height="16" fill="#1d2520"/>
+    <text x="90" y="100" font-family="Georgia, serif" font-size="17" fill="#f7f2e9" font-weight="bold">Tax Invoice</text>
+    <rect x="226" y="86" width="40" height="18" rx="5" fill="url(#hc-teal)"/>
+    <text x="246" y="99" font-family="monospace" font-size="9" fill="#fff" text-anchor="middle">GST</text>
+    <!-- lines -->
+    <g font-family="monospace" font-size="10" fill="#6b7269">
+      <text x="90" y="156">Item · HSN 8712</text><text x="260" y="156" text-anchor="end" fill="#3c463f">18,400</text>
+      <line x1="90" y1="166" x2="260" y2="166" stroke="#e2d8c4" stroke-dasharray="3 3"/>
+      <text x="90" y="186">Service · tune</text><text x="260" y="186" text-anchor="end" fill="#3c463f">350</text>
+      <line x1="90" y1="196" x2="260" y2="196" stroke="#e2d8c4" stroke-dasharray="3 3"/>
+      <text x="90" y="216">CGST 9% + SGST 9%</text><text x="260" y="216" text-anchor="end" fill="#3c463f">3,375</text>
+      <line x1="90" y1="226" x2="260" y2="226" stroke="#e2d8c4" stroke-dasharray="3 3"/>
+    </g>
+    <!-- total -->
+    <line x1="90" y1="250" x2="260" y2="250" stroke="#1d2520" stroke-width="2"/>
+    <text x="90" y="272" font-family="'Schibsted Grotesk',sans-serif" font-size="13" fill="#1d2520" font-weight="bold">Grand total</text>
+    <text x="260" y="272" text-anchor="end" font-family="monospace" font-size="15" fill="#bf5e1f" font-weight="bold">22,125</text>
+    <!-- signature line -->
+    <line x1="90" y1="320" x2="180" y2="320" stroke="#cdbf9f"/>
+    <text x="90" y="336" font-family="monospace" font-size="8" fill="#8a8f84">Authorised signatory</text>
+  </g>
+
+  <!-- phone with paid UPI -->
+  <g filter="url(#hc-sh2)" transform="rotate(6 360 250)">
+    <rect x="300" y="150" width="130" height="220" rx="22" fill="#1d2520"/>
+    <rect x="309" y="162" width="112" height="196" rx="14" fill="#fffdf8"/>
+    <!-- check circle -->
+    <circle cx="365" cy="222" r="30" fill="url(#hc-teal)"/>
+    <path d="M352 222 l9 9 16 -18" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="365" y="276" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-size="13" font-weight="bold" fill="#1d2520">Payment received</text>
+    <text x="365" y="296" text-anchor="middle" font-family="monospace" font-size="16" fill="#bf5e1f" font-weight="bold">₹22,125</text>
+    <text x="365" y="316" text-anchor="middle" font-family="monospace" font-size="9" fill="#8a8f84">UPI · 2:14 PM</text>
+    <rect x="345" y="345" width="40" height="4" rx="2" fill="#1d2520"/>
+  </g>
+
+  <!-- mini thermal receipt printing -->
+  <g filter="url(#hc-sh2)">
+    <rect x="120" y="300" width="86" height="120" rx="6" fill="#fffdf8" stroke="#e2d8c4"/>
+    <g font-family="monospace" font-size="7" fill="#9aa091">
+      <text x="163" y="318" text-anchor="middle" fill="#1d2520" font-size="8" font-weight="bold">GEAR HUB</text>
+      <line x1="130" y1="326" x2="196" y2="326" stroke="#e2d8c4" stroke-dasharray="2 2"/>
+      <text x="130" y="340">Tyre tube</text><text x="196" y="340" text-anchor="end">120</text>
+      <text x="130" y="352">Brake pad</text><text x="196" y="352" text-anchor="end">240</text>
+      <line x1="130" y1="360" x2="196" y2="360" stroke="#e2d8c4" stroke-dasharray="2 2"/>
+      <text x="130" y="374" fill="#1d2520" font-weight="bold">TOTAL</text><text x="196" y="374" text-anchor="end" fill="#bf5e1f" font-weight="bold">360</text>
+    </g>
+    <path d="M120 414 q43 12 86 0" fill="none" stroke="#e2d8c4"/>
+  </g>
+
+  <!-- saffron accent coin -->
+  <g transform="translate(430 330)">
+    <circle r="30" fill="url(#hc-saff)" filter="url(#hc-sh2)"/>
+    <text y="6" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#fff" font-weight="bold">₹</text>
+  </g>
+</svg>

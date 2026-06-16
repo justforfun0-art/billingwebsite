@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>OG cover export (1200×630)</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #5b5b5b; }
+  /* The capture frame is EXACTLY 1200×630. Screenshot just this box. */
+  #frame { width: 1200px; height: 630px; overflow: hidden; }
+  #frame img { width: 1200px; height: 630px; display: block; }
+  .hint { position: fixed; top: 10px; left: 10px; right: 10px; font: 14px/1.5 system-ui, sans-serif;
+          color: #fff; background: rgba(0,0,0,.55); padding: 10px 14px; border-radius: 8px; z-index: 9; }
+  @media print { .hint { display: none; } body { background: #fff; } }
+</style>
+</head>
+<body>
+  <div class="hint">
+    Export the OG image: this box is exactly <b>1200×630</b>.
+    <b>Option A</b> — open in Chrome → DevTools (F12) → run <code>document.querySelector('#frame').scrollIntoView()</code>,
+    right-click the box → “Capture node screenshot”.
+    <b>Option B</b> — any screenshot tool, crop to the box.
+    <b>Option C (best)</b> — CLI: <code>rsvg-convert -w 1200 -h 630 ../assets/og-cover.svg &gt; ../assets/og-cover.png</code>
+    (or open og-cover.svg in Figma/Inkscape and export PNG @ 1200×630). Save as <b>web/assets/og-cover.png</b>.
+  </div>
+  <div id="frame">
+    <img src="../assets/og-cover.svg" alt="Gear Hub OG cover — 1200 by 630"/>
+  </div>
+</body>
+</html>

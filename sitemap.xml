@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://gearhub.in/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://gearhub.in/pricing/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://gearhub.in/features/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://gearhub.in/features/gst-billing/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gearhub.in/features/multi-shop/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gearhub.in/solutions/cycle-shops/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://gearhub.in/solutions/retail-shops/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://gearhub.in/solutions/service-shops/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://gearhub.in/blog/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://gearhub.in/blog/gst-invoice-rules-small-shops/</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://gearhub.in/blog/how-to-choose-billing-software-india/</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://gearhub.in/blog/switch-from-paper-billing/</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://gearhub.in/blog/gstr1-vs-gstr3b-explained/</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://gearhub.in/blog/inventory-management-small-shops/</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://gearhub.in/blog/thermal-printer-setup-guide/</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://gearhub.in/terms.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://gearhub.in/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>

@@ -1,0 +1,40 @@
+# Netlify deploy config for the Gear Hub marketing site.
+# Publish this `web/` folder directly (it's pre-built static HTML — no build step).
+
+[build]
+  publish = "."
+  command = ""   # static; pages are generated locally via `node _build/build.mjs`
+
+# Pretty URLs: serve /features/gst-billing/ from its index.html, and drop trailing-slash
+# redirects so /features/gst-billing → /features/gst-billing/ (Netlify does this by default
+# with pretty_urls, kept explicit here).
+[build.processing]
+  skip_processing = false
+[build.processing.html]
+  pretty_urls = true
+
+# Long-cache static assets (hashed content rarely changes); HTML stays fresh.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Security headers (good hygiene + a small SEO/trust signal).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# Custom 404.
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
