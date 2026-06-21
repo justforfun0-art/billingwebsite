@@ -400,6 +400,137 @@ PAGES.push({
 // ── Blog: data-driven. Each entry generates its own article page AND a card on /blog/. ──
 const ARTICLES = [
   {
+    slug: "e-invoice-irn-small-business-guide", cat: "GST", read: "6 min read", date: "2026-06-22",
+    title: "E-invoicing (IRN) for small businesses: do you need it, and how it works",
+    excerpt: "What an IRN and signed QR actually are, the turnover threshold that triggers e-invoicing, and how to generate one without leaving your billing screen.",
+    description: "A plain-language guide to GST e-invoicing (IRN) for Indian small businesses: what an Invoice Reference Number and signed QR code are, the turnover threshold, how generation works, and how billing software automates it.",
+    keywords: "e-invoice India, IRN generation, e-invoicing threshold, GST e-invoice small business, signed QR code invoice, e-invoice billing software",
+    lede: "E-invoicing sounds like an enterprise problem — until the turnover threshold drops to your bracket. Here's what it actually is, whether it applies to you yet, and why the easiest time to get ready is before you're forced to.",
+    html: `
+    <h2>What "e-invoice" really means (it's not just a PDF)</h2>
+    <p>An e-invoice isn't an invoice you email. It's an invoice you <strong>register on the government's portal (IRP)</strong> at the moment you raise it. The portal returns two things: an <strong>IRN</strong> (a unique Invoice Reference Number) and a <strong>signed QR code</strong>. Those are what make the invoice legally an "e-invoice" — and they must be printed on the copy you give the customer.</p>
+    <h2>Do you need it? Check the threshold</h2>
+    <p>E-invoicing is mandatory for businesses above a prescribed <strong>annual turnover threshold</strong>. That threshold has only come <em>down</em> over the years — what covered only large firms now reaches many mid-sized shops. If you're close to it, assume you'll cross it and prepare early; retrofitting at the deadline is stressful.</p>
+    <blockquote>The threshold is based on turnover in any preceding financial year since GST began — not just last year. Check carefully if you've ever had a big year.</blockquote>
+    <h2>How generation actually works</h2>
+    <p>The flow is: you create the invoice in your billing software → the software sends it to the IRP → the IRP validates and returns the IRN + signed QR → your software prints them on the invoice. Done well, this happens <strong>in the background in a second or two</strong> — you just bill as normal and the IRN appears on the print.</p>
+    <h2>What changes on the invoice itself</h2>
+    <ul><li>The <strong>IRN</strong> is recorded against the bill.</li>
+    <li>The <strong>signed QR code</strong> is printed (officers and customers can scan to verify authenticity).</li>
+    <li>An <strong>Ack number and date</strong> from the portal are stored.</li></ul>
+    <p>Your invoice numbering, HSN codes and tax split don't change — e-invoicing sits on top of correct billing, it doesn't replace it.</p>
+    <h2>E-invoice vs e-way bill — not the same thing</h2>
+    <p>People confuse them. The <strong>e-invoice (IRN)</strong> is about registering the sale; the <strong>e-way bill</strong> is about transporting goods above a value threshold. You may need both, one, or neither depending on the transaction — good software can generate the e-way bill from the same invoice data.</p>
+    <h2>How Pride POS handles it</h2>
+    <p><a href="/features/gst-billing/">Pride POS</a> generates the <strong>IRN and signed QR</strong> at checkout where e-invoicing applies and prints them straight onto the invoice — no separate portal login, no copy-paste. If you're under the threshold today, the feature simply stays out of your way until you need it. <a href="/pricing/">See how it works →</a> or <a href="https://app.pridepos.com/?signup=1">try it free for 5 days</a>.</p>`
+  },
+  {
+    slug: "barcode-scanning-for-shop-billing", cat: "Hardware", read: "5 min read", date: "2026-06-22",
+    title: "Barcode scanning at the billing counter: a simple setup guide",
+    excerpt: "Faster billing, fewer wrong prices, easier stock counts. How to choose a scanner, label your items, and start scanning — even for products without a barcode.",
+    description: "A practical guide to barcode scanning for shop billing in India: choosing a 1D/2D scanner, USB vs Bluetooth, printing your own barcode labels for unlabelled items, and speeding up billing and stock-takes.",
+    keywords: "barcode scanner billing, barcode setup shop, print barcode labels, USB barcode scanner India, POS barcode scanning, barcode for inventory",
+    lede: "A barcode scanner is a ₹1,500 device that pays for itself in a week — faster checkout, no mis-keyed prices, and stock counts that take minutes. Here's how to set one up, including for the many items that don't come barcoded.",
+    html: `
+    <h2>Why scanning beats typing</h2>
+    <p>Every item you look up and type by hand is a chance to pick the wrong one or fat-finger the price. A scan is one beep: the right item, the right price, every time. At a busy counter that's faster checkout and fewer disputes — and at stock-take time, it's the difference between an evening and an hour.</p>
+    <h2>1D or 2D scanner?</h2>
+    <p><strong>1D (laser/linear)</strong> scanners read the standard striped barcodes on most products — cheap and perfect for a shop. <strong>2D (image)</strong> scanners also read QR codes and can scan off a phone screen, which is handy if you ever accept QR-based payments or coupons. For pure billing, a good 1D scanner is plenty.</p>
+    <h2>USB or Bluetooth?</h2>
+    <ul><li><strong>USB</strong> — plug it in and it just works; the scanner acts like a keyboard typing the code. Best for a fixed counter.</li>
+    <li><strong>Bluetooth</strong> — cordless, good if you scan items on shelves or at a tablet counter.</li></ul>
+    <p>Most shops are happiest with a plain USB scanner — there's nothing to pair and nothing to charge.</p>
+    <h2>Step 1 — Store the barcode against each item</h2>
+    <p>For products that already carry a barcode (the EAN/UPC printed by the brand), scan it once into the item's record. From then on, scanning that product at the counter finds it instantly.</p>
+    <h2>Step 2 — Print your own labels for unbarcoded items</h2>
+    <p>Loose goods, local products and spares often have no barcode. The fix: <strong>generate and print your own barcode labels</strong> from your billing software, stick them on, and scan like anything else. This is the step most guides skip — and it's what makes scanning work for a real Indian shop, not just supermarket stock.</p>
+    <blockquote>You don't need every item barcoded on day one. Label your fast-movers first; the rest can wait.</blockquote>
+    <h2>Step 3 — Scan straight into the bill</h2>
+    <p>With items mapped, billing becomes: scan, scan, scan, take payment. No searching, no typing prices. The same codes make purchase entry and stock-takes faster too.</p>
+    <h2>Common gotchas</h2>
+    <ul><li><strong>Scanner beeps but nothing happens</strong> → the cursor isn't in the item field; click into the bill first.</li>
+    <li><strong>Item not found</strong> → that barcode isn't stored against any item yet; add it once.</li>
+    <li><strong>Wrong/garbled code</strong> → scanner set to the wrong symbology or a damaged label; reprint it.</li></ul>
+    <h2>How Pride POS supports it</h2>
+    <p><a href="/features/gst-billing/">Pride POS</a> works with any USB or Bluetooth scanner, lets you <strong>print barcode labels</strong> for items that don't have one, and scans straight into the cart at checkout. <a href="https://app.pridepos.com/?signup=1">Start a free trial →</a></p>`
+  },
+  {
+    slug: "running-two-shops-one-system", cat: "Operations", read: "6 min read", date: "2026-06-22",
+    title: "Running two shops on one system: stock, billing and a single view",
+    excerpt: "Opening a second outlet? How to keep separate billing and stock per shop while seeing the whole business — and move stock between branches without chaos.",
+    description: "A guide for Indian shopkeepers running multiple outlets: per-shop billing and invoice numbering, separate stock with transfers between branches, a shared item catalogue, and one consolidated view of the business.",
+    keywords: "multi shop billing software, run two shops one system, multi outlet POS India, stock transfer between branches, multi branch inventory, per shop billing",
+    lede: "A second shop doubles your sales and your headaches — two tills, two stock rooms, two sets of numbers. The trick is to keep each outlet independent where it must be, and unified where it helps. Here's how to set that up.",
+    html: `
+    <h2>Keep billing separate per shop</h2>
+    <p>Each outlet needs its <strong>own invoice number series</strong> and its own daily cash — mixing them is an audit and reconciliation nightmare. The right setup gives every shop a clean, consecutive numbering of its own while still rolling up into one business.</p>
+    <h2>Stock is per shop — but the catalogue is shared</h2>
+    <p>This is the key distinction. Your <strong>item list (names, prices, HSN, barcodes) should be shared</strong> — change a price once, it's live everywhere. But the <strong>quantity on hand is per shop</strong>, because what's on Shop A's shelf isn't on Shop B's. Software that conflates the two leaves you over-ordering or selling stock you don't have.</p>
+    <blockquote>One catalogue, many stock counts. Get this model right and multi-shop stops being scary.</blockquote>
+    <h2>Move stock between branches properly</h2>
+    <p>When you shift goods from one outlet to another, record it as a <strong>stock transfer</strong>, not a quiet adjustment. A transfer decrements the sending shop, increments the receiver, and leaves a trail — so if something goes missing in transit, you know. This is how you stop "I thought it was at the other branch" from eating your margin.</p>
+    <h2>See the whole business in one view</h2>
+    <p>Per-shop independence is useless if you can't step back and see everything. You want to <strong>filter reports by one shop or view all shops together</strong> — today's sales across both outlets, total stock value, who's selling what. That single consolidated view is the whole reason to run them on one system instead of two.</p>
+    <h2>Control who sees what</h2>
+    <p>Your Shop B manager probably shouldn't see Shop A's full numbers or switch outlets at will. <strong>Per-staff roles and a shop they're tied to</strong> keep each counter focused while you, the owner, see across all of them.</p>
+    <h2>Don't forget GST across branches</h2>
+    <p>If your outlets are in the same state under one GSTIN, billing is straightforward; across states you may have separate registrations. Either way, your returns should aggregate correctly — which they will if every bill, in every shop, is captured in one system.</p>
+    <h2>How Pride POS does multi-shop</h2>
+    <p><a href="/features/multi-shop/">Pride POS</a> gives each outlet its own billing and per-shop stock on a shared catalogue, <strong>stock transfers</strong> between branches, role-based access tied to a shop, and reports you can view per-shop or consolidated. Add a second outlet as a setting, not a migration. <a href="/pricing/">See pricing →</a> or <a href="https://app.pridepos.com/?signup=1">start a free trial</a>.</p>`
+  },
+  {
+    slug: "how-to-file-gstr1-from-billing-software", cat: "GST", read: "6 min read", date: "2026-06-21",
+    title: "How to file GSTR-1 from your billing software (the easy way)",
+    excerpt: "Stop re-typing invoices into the GST portal. How to export a portal-ready GSTR-1 straight from your bills — and the errors that cause filing rejections.",
+    description: "Step-by-step guide to filing GSTR-1 from billing software in India: exporting a portal-ready GSTR-1 JSON, B2B vs B2C sections, HSN summary, common upload errors, and how to keep it reconciled with GSTR-3B.",
+    keywords: "how to file GSTR-1, GSTR-1 from billing software, GSTR-1 JSON upload, GSTR1 filing India, GST return software, GSTR-1 B2B B2C HSN summary",
+    lede: "Filing GSTR-1 by hand — re-keying every invoice into the GST portal — is slow and exactly how mistakes creep in. If you already bill on software, the return is mostly done. Here's how to get it filed in minutes instead of an evening.",
+    html: `
+    <h2>What GSTR-1 actually needs from you</h2>
+    <p>GSTR-1 is the <strong>invoice-level statement of your sales</strong> for the period. It groups your bills into sections: <strong>B2B</strong> (sales to GSTIN-holders), <strong>B2C large</strong> (big inter-state consumer invoices), a <strong>B2C summary</strong> (everything else), <strong>credit/debit notes</strong>, and an <strong>HSN-wise summary</strong>. Every one of those comes straight out of the bills you already raised — so you shouldn't be typing anything twice.</p>
+    <h2>Step 1 — Bill correctly all month, not at filing time</h2>
+    <p>The return is only as clean as the bills behind it. Two habits make filing painless: put the right <strong>HSN code</strong> on every item, and capture the <strong>customer's GSTIN and state</strong> for B2B sales so the CGST/SGST-vs-IGST split is right. Fix these at the counter, not on the portal.</p>
+    <h2>Step 2 — Generate the GSTR-1 for the period</h2>
+    <p>In your software, pick the month (or quarter, if you're on QRMP) and generate the GSTR-1. Good software produces it pre-grouped into the exact B2B / B2C / CDNR / HSN sections the portal expects — no manual sorting.</p>
+    <h2>Step 3 — Upload the JSON (or use the offline tool)</h2>
+    <p>The GST portal accepts a <strong>JSON file</strong> in the official schema. Export it from your billing tool and upload it under <em>Returns → GSTR-1 → Prepare offline</em>, or import it into the GST Offline Tool. The portal validates and shows you a summary to confirm before you submit.</p>
+    <blockquote>If your software exports the portal-ready JSON, "filing" becomes: download, upload, review, submit. The data entry already happened when you billed.</blockquote>
+    <h2>The errors that get filings rejected</h2>
+    <ul><li><strong>Invalid GSTIN</strong> on a B2B invoice — one wrong digit and that invoice fails validation.</li>
+    <li><strong>Wrong place of supply</strong> — charging CGST/SGST when it should be IGST (or vice-versa).</li>
+    <li><strong>Missing or wrong HSN</strong> in the HSN summary.</li>
+    <li><strong>Invoice number gaps or duplicates</strong> — the portal expects a consecutive series for the year.</li></ul>
+    <p>Each of these is far easier to prevent at billing time than to chase down on filing day.</p>
+    <h2>Don't forget: GSTR-1 must tie to GSTR-3B</h2>
+    <p>The output tax in your <a href="/blog/gstr1-vs-gstr3b-explained/">GSTR-3B summary</a> has to match the tax from the invoices in GSTR-1. When both are built from the same bills, they can't drift apart — which is the whole point of filing from your billing data instead of a spreadsheet.</p>
+    <h2>How Pride POS does it</h2>
+    <p><a href="/features/gst-billing/">Pride POS</a> builds a portal-ready <strong>GSTR-1</strong> and a <strong>GSTR-3B summary with input tax credit</strong> from your actual invoices and purchases — correct HSN, correct tax split, sections pre-grouped — so filing is a download-and-upload, not a re-typing marathon. <a href="/pricing/">See how it works →</a> or <a href="https://app.pridepos.com/?signup=1">try it free for 5 days</a>.</p>`
+  },
+  {
+    slug: "manage-customer-credit-khata-shop", cat: "Operations", read: "6 min read", date: "2026-06-21",
+    title: "Khata done right: managing customer credit without losing money",
+    excerpt: "Udhaar keeps customers loyal — and quietly drains your cash. How to run a digital khata with limits, reminders and a balance you can actually trust.",
+    description: "A practical guide to managing customer credit (khata / udhaar) for Indian shops: setting credit limits, recording receipts against bills, sending payment reminders, and keeping an accurate khata balance with billing software.",
+    keywords: "khata management, udhaar bahi digital, customer credit shop, manage customer credit India, digital khata software, credit limit customers, payment reminder customers",
+    lede: "Almost every Indian shop runs a khata — udhaar to trusted regulars. It builds loyalty, but the bahi (credit book) is where profit silently leaks: forgotten balances, no limits, and the awkward chase months later. Here's how to keep the goodwill and the cash.",
+    html: `
+    <h2>Why the paper bahi costs you money</h2>
+    <p>The khata book has one fatal flaw: it relies on memory and honesty to stay accurate. Balances get written in the wrong column, a payment goes unrecorded, and by the time you notice, the customer doesn't remember either. Multiply that across a year and the "small" udhaar adds up to real working capital stuck on the street.</p>
+    <h2>1. Give each credit customer a real limit</h2>
+    <p>Open-ended credit is how a ₹500 udhaar becomes ₹15,000. Decide a <strong>credit limit</strong> per customer based on how well you know them and how fast they pay. A digital khata can warn you — or block the sale — when a customer is over their limit, before you hand over more goods.</p>
+    <h2>2. Record every receipt against the bill it pays</h2>
+    <p>When a customer pays something on account, it should reduce a specific balance, not vanish into the till. <strong>Allocating receipts to bills</strong> means you always know exactly what's still due and against which invoice — no more "I think you paid for that one."</p>
+    <blockquote>A khata you can't trust at a glance isn't an asset — it's an argument waiting to happen.</blockquote>
+    <h2>3. Let the reminders do the chasing</h2>
+    <p>The reason balances linger is that asking for money is awkward, so it gets put off. Take the awkwardness out of it: a polite, automatic <strong>WhatsApp or SMS reminder</strong> with the exact balance does the chasing for you, on a schedule, without a face-to-face confrontation.</p>
+    <h2>4. Watch the ageing, not just the total</h2>
+    <p>A ₹20,000 khata where everyone paid last week is healthy. A ₹20,000 khata where half is over 90 days old is a problem. Sort outstanding balances by <strong>how old they are</strong> and act on the oldest first — that's the money most at risk of never coming back.</p>
+    <h2>5. Keep khata opt-in, not the default</h2>
+    <p>Not every customer should be a credit customer. Make credit a deliberate choice you enable per person, so a new walk-in can't accidentally run up a tab. The discipline of "who is allowed udhaar" is half the battle.</p>
+    <h2>How Pride POS handles khata</h2>
+    <p>Pride POS turns the bahi into a live ledger: <strong>per-customer credit that you switch on deliberately</strong>, receipts allocated against specific bills, a balance that's always current, and <strong>WhatsApp payment reminders</strong> so you collect without the awkward calls. You keep the loyalty udhaar earns — and stop the quiet leak. <a href="/features/">See the features →</a> or <a href="https://app.pridepos.com/?signup=1">start a free trial</a>.</p>`
+  },
+  {
     slug: "gst-invoice-rules-small-shops", cat: "GST", read: "6 min read", date: "2026-06-02",
     title: "GST invoice rules every small Indian shop should know",
     excerpt: "HSN codes, the CGST/SGST/IGST split, e-invoicing thresholds and the fields a tax invoice must carry — in plain language.",
