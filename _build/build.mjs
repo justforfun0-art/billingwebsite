@@ -413,12 +413,49 @@ PAGES.push({
     <span class="eyebrow">We'd love to hear from you</span><h1>Get in <span class="hl">touch</span></h1>
     <p class="lede" style="margin:0 auto">Questions about features, pricing or moving your shop to Pride POS? Send a message — or email <a href="mailto:support@pridepos.com">support@pridepos.com</a>.</p>
   </div></div></section>
-  <section class="section tight"><div class="container" style="max-width:640px">${cr.html}
-    <form id="contactForm" class="contact-form" novalidate>
-      <label>Name <input type="text" name="name" required maxlength="200" autocomplete="name"/></label>
-      <label>Email <input type="email" name="email" required maxlength="200" autocomplete="email"/></label>
-      <label>Phone <span class="muted">(optional)</span> <input type="tel" name="phone" maxlength="40" autocomplete="tel"/></label>
-      <label>Message <textarea name="message" required rows="6" maxlength="5000"></textarea></label>
+  <section class="section tight"><div class="container" style="max-width:680px">${cr.html}
+    <form id="contactForm" class="contact-form card reveal" novalidate>
+      <div class="cf-row">
+        <div class="cf-field">
+          <label for="cf-name">Name <span class="cf-req">*</span></label>
+          <input id="cf-name" type="text" name="name" required maxlength="200" autocomplete="name" placeholder="Your name"/>
+        </div>
+        <div class="cf-field">
+          <label for="cf-email">Email <span class="cf-req">*</span></label>
+          <input id="cf-email" type="email" name="email" required maxlength="200" autocomplete="email" placeholder="you@shop.com"/>
+        </div>
+      </div>
+      <div class="cf-row">
+        <div class="cf-field">
+          <label for="cf-phone">Phone <span class="cf-opt">(optional)</span></label>
+          <input id="cf-phone" type="tel" name="phone" maxlength="40" autocomplete="tel" placeholder="Mobile number"/>
+        </div>
+        <div class="cf-field">
+          <label for="cf-industry">Industry <span class="cf-opt">(optional)</span></label>
+          <select id="cf-industry" name="industry">
+            <option value="">Select…</option>
+            <option>Cycle shop</option>
+            <option>Retail / general store</option>
+            <option>Service &amp; repair</option>
+            <option>Electronics</option>
+            <option>Hardware</option>
+            <option>Pharmacy</option>
+            <option>Apparel / footwear</option>
+            <option>Restaurant / café</option>
+            <option>Wholesale / distribution</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="cf-field">
+        <label for="cf-req">Tell us your requirements <span class="cf-req">*</span></label>
+        <textarea id="cf-req" name="requirements" required rows="4" maxlength="600" placeholder="What do you need from a billing system? (GST returns, multi-shop, offline, hardware, migration from another tool…)"></textarea>
+        <div class="cf-count"><span id="cf-req-count">0</span>/600</div>
+      </div>
+      <div class="cf-field">
+        <label for="cf-msg">Message <span class="cf-opt">(optional)</span></label>
+        <textarea id="cf-msg" name="message" rows="3" maxlength="5000" placeholder="Anything else you'd like to add"></textarea>
+      </div>
       <input type="text" name="company" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true"/>
       <button type="submit" class="btn primary lg" id="contactSubmit">Send message</button>
       <p id="contactStatus" class="contact-status" role="status" aria-live="polite"></p>
@@ -428,6 +465,8 @@ PAGES.push({
   (function(){
     var f=document.getElementById('contactForm');if(!f)return;
     var btn=document.getElementById('contactSubmit'),st=document.getElementById('contactStatus');
+    var req=document.getElementById('cf-req'),cnt=document.getElementById('cf-req-count');
+    if(req&&cnt){req.addEventListener('input',function(){cnt.textContent=req.value.length;});}
     f.addEventListener('submit',function(e){
       e.preventDefault();
       var d=new FormData(f);
@@ -436,10 +475,10 @@ PAGES.push({
       fetch('${SB_URL}/rest/v1/rpc/submit_contact_message',{
         method:'POST',
         headers:{'Content-Type':'application/json','apikey':'${SB_ANON}','Authorization':'Bearer ${SB_ANON}'},
-        body:JSON.stringify({p_name:d.get('name'),p_email:d.get('email'),p_message:d.get('message'),p_phone:d.get('phone')||null,p_hp:d.get('company')||''})
+        body:JSON.stringify({p_name:d.get('name'),p_email:d.get('email'),p_requirements:d.get('requirements'),p_message:d.get('message')||null,p_phone:d.get('phone')||null,p_industry:d.get('industry')||null,p_hp:d.get('company')||''})
       }).then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j};});})
         .then(function(res){
-          if(res.ok){f.reset();st.textContent='Thanks — we got your message and will reply to your email soon.';st.className='contact-status ok';}
+          if(res.ok){f.reset();if(cnt)cnt.textContent='0';st.textContent='Thanks — we got your message and will reply to your email soon.';st.className='contact-status ok';}
           else{st.textContent=(res.j&&res.j.message)||'Something went wrong. Please email support@pridepos.com.';st.className='contact-status err';}
         }).catch(function(){st.textContent='Network error. Please email support@pridepos.com.';st.className='contact-status err';})
         .finally(function(){btn.disabled=false;btn.textContent='Send message';});
