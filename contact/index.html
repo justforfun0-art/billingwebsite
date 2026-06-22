@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Page not found — Pride POS</title>
-<meta name="description" content="The page you were looking for doesn't exist. Head back to Pride POS."/>
-<link rel="canonical" href="https://pridepos.com/404.html"/>
-<meta name="robots" content="noindex, follow"/>
+<title>Contact Pride POS — talk to us about billing for your shop</title>
+<meta name="description" content="Questions about Pride POS GST billing software? Send us a message and we'll get back to you, or email support@pridepos.com."/>
+<link rel="canonical" href="https://pridepos.com/contact/"/>
+<meta name="robots" content="index, follow, max-image-preview:large"/>
 <meta name="theme-color" content="#1d2520"/>
-
+<meta name="keywords" content="contact Pride POS, Pride POS support, billing software help India"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Pride POS"/>
-<meta property="og:title" content="Page not found — Pride POS"/>
-<meta property="og:description" content="The page you were looking for doesn't exist. Head back to Pride POS."/>
-<meta property="og:url" content="https://pridepos.com/404.html"/>
+<meta property="og:title" content="Contact Pride POS — talk to us about billing for your shop"/>
+<meta property="og:description" content="Questions about Pride POS GST billing software? Send us a message and we'll get back to you, or email support@pridepos.com."/>
+<meta property="og:url" content="https://pridepos.com/contact/"/>
 <meta property="og:image" content="https://pridepos.com/assets/og-cover.png"/>
 <meta property="og:locale" content="en_IN"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Page not found — Pride POS"/>
-<meta name="twitter:description" content="The page you were looking for doesn't exist. Head back to Pride POS."/>
+<meta name="twitter:title" content="Contact Pride POS — talk to us about billing for your shop"/>
+<meta name="twitter:description" content="Questions about Pride POS GST billing software? Send us a message and we'll get back to you, or email support@pridepos.com."/>
 <meta name="twitter:image" content="https://pridepos.com/assets/og-cover.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -49,8 +49,8 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Not found",
-          "item": "https://pridepos.com/404.html"
+          "name": "Contact",
+          "item": "https://pridepos.com/contact/"
         }
       ]
     }
@@ -85,15 +85,43 @@
   </div>
 </header>
 <main id="main">
-<section class="hero"><div class="container center" style="max-width:640px;margin:0 auto"><div class="reveal">
-    <span class="eyebrow">404</span>
-    <h1>This page took an <span class="hl">unscheduled day off</span>.</h1>
-    <p class="lede" style="margin:0 auto 28px">We couldn't find what you were looking for. It may have moved — let's get you back on track.</p>
-    <div class="hero-cta" style="justify-content:center">
-      <a class="btn primary lg" href="/">Back to home</a>
-      <a class="btn lg" href="/blog/">Read the blog</a>
-    </div>
+<section class="hero"><div class="container center" style="max-width:760px;margin:0 auto"><div class="reveal">
+    <span class="eyebrow">We'd love to hear from you</span><h1>Get in <span class="hl">touch</span></h1>
+    <p class="lede" style="margin:0 auto">Questions about features, pricing or moving your shop to Pride POS? Send a message — or email <a href="mailto:support@pridepos.com">support@pridepos.com</a>.</p>
   </div></div></section>
+  <section class="section tight"><div class="container" style="max-width:640px"><div class="crumbs"><a href="/">Home</a><span>/</span><span aria-current="page">Contact</span></div>
+    <form id="contactForm" class="contact-form" novalidate>
+      <label>Name <input type="text" name="name" required maxlength="200" autocomplete="name"/></label>
+      <label>Email <input type="email" name="email" required maxlength="200" autocomplete="email"/></label>
+      <label>Phone <span class="muted">(optional)</span> <input type="tel" name="phone" maxlength="40" autocomplete="tel"/></label>
+      <label>Message <textarea name="message" required rows="6" maxlength="5000"></textarea></label>
+      <input type="text" name="company" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true"/>
+      <button type="submit" class="btn primary lg" id="contactSubmit">Send message</button>
+      <p id="contactStatus" class="contact-status" role="status" aria-live="polite"></p>
+    </form>
+  </div></section>
+  <script>
+  (function(){
+    var f=document.getElementById('contactForm');if(!f)return;
+    var btn=document.getElementById('contactSubmit'),st=document.getElementById('contactStatus');
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var d=new FormData(f);
+      st.textContent='';st.className='contact-status';
+      btn.disabled=true;btn.textContent='Sending…';
+      fetch('https://eoyrqtptuausavhhodnc.supabase.co/rest/v1/rpc/submit_contact_message',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVveXJxdHB0dWF1c2F2aGhvZG5jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5Mzk0MTQsImV4cCI6MjA5NDUxNTQxNH0.aLN-BuF-5wA1_ybNiplfSUTDRKs95BsB8cxxy3mu0wI','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVveXJxdHB0dWF1c2F2aGhvZG5jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5Mzk0MTQsImV4cCI6MjA5NDUxNTQxNH0.aLN-BuF-5wA1_ybNiplfSUTDRKs95BsB8cxxy3mu0wI'},
+        body:JSON.stringify({p_name:d.get('name'),p_email:d.get('email'),p_message:d.get('message'),p_phone:d.get('phone')||null,p_hp:d.get('company')||''})
+      }).then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j};});})
+        .then(function(res){
+          if(res.ok){f.reset();st.textContent='Thanks — we got your message and will reply to your email soon.';st.className='contact-status ok';}
+          else{st.textContent=(res.j&&res.j.message)||'Something went wrong. Please email support@pridepos.com.';st.className='contact-status err';}
+        }).catch(function(){st.textContent='Network error. Please email support@pridepos.com.';st.className='contact-status err';})
+        .finally(function(){btn.disabled=false;btn.textContent='Send message';});
+    });
+  })();
+  </script>
 </main>
 <footer class="footer">
   <div class="container">
