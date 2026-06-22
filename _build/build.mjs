@@ -7,7 +7,7 @@ import { dirname, join } from "node:path";
 import { head, NAV, FOOTER, CTA, crumbs } from "./partials.mjs";
 
 const WEB = join(dirname(fileURLToPath(import.meta.url)), "..");
-const ORG = { "@type": "Organization", "@id": "https://pridepos.com/#org", "name": "Pride POS", "url": "https://pridepos.com/", "email": "hello@pridepos.com", "areaServed": "IN" };
+const ORG = { "@type": "Organization", "@id": "https://pridepos.com/#org", "name": "Pride POS", "url": "https://pridepos.com/", "email": "support@pridepos.com", "areaServed": "IN" };
 
 // Helper builders ----------------------------------------------------------
 const featureLD = (name, desc, url) => ({
@@ -395,6 +395,57 @@ PAGES.push({
     ["How do I pay?", "Securely online via Razorpay — UPI, cards or net banking. Billing is monthly and you can stop anytime."],
   ])}</div></section>
   ${CTA}`
+});
+
+// ── Contact page ────────────────────────────────────────────────────────
+// Static page; the form POSTs to the anon-callable submit_contact_message RPC
+// (mig 69) on Supabase. Anon key is public by design; the RPC stores the message
+// + emails support@. Honeypot field + DB-side rate-limit guard against spam.
+const SB_URL = "https://eoyrqtptuausavhhodnc.supabase.co";
+const SB_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVveXJxdHB0dWF1c2F2aGhvZG5jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5Mzk0MTQsImV4cCI6MjA5NDUxNTQxNH0.aLN-BuF-5wA1_ybNiplfSUTDRKs95BsB8cxxy3mu0wI";
+PAGES.push({
+  out: "contact/index.html",
+  title: "Contact Pride POS — talk to us about billing for your shop",
+  description: "Questions about Pride POS GST billing software? Send us a message and we'll get back to you, or email support@pridepos.com.",
+  keywords: "contact Pride POS, Pride POS support, billing software help India",
+  crumb: [{ name: "Home", path: "/" }, { name: "Contact", path: "/contact/" }],
+  body: ({ cr }) => `<section class="hero"><div class="container center" style="max-width:760px;margin:0 auto"><div class="reveal">
+    <span class="eyebrow">We'd love to hear from you</span><h1>Get in <span class="hl">touch</span></h1>
+    <p class="lede" style="margin:0 auto">Questions about features, pricing or moving your shop to Pride POS? Send a message — or email <a href="mailto:support@pridepos.com">support@pridepos.com</a>.</p>
+  </div></div></section>
+  <section class="section tight"><div class="container" style="max-width:640px">${cr.html}
+    <form id="contactForm" class="contact-form" novalidate>
+      <label>Name <input type="text" name="name" required maxlength="200" autocomplete="name"/></label>
+      <label>Email <input type="email" name="email" required maxlength="200" autocomplete="email"/></label>
+      <label>Phone <span class="muted">(optional)</span> <input type="tel" name="phone" maxlength="40" autocomplete="tel"/></label>
+      <label>Message <textarea name="message" required rows="6" maxlength="5000"></textarea></label>
+      <input type="text" name="company" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true"/>
+      <button type="submit" class="btn primary lg" id="contactSubmit">Send message</button>
+      <p id="contactStatus" class="contact-status" role="status" aria-live="polite"></p>
+    </form>
+  </div></section>
+  <script>
+  (function(){
+    var f=document.getElementById('contactForm');if(!f)return;
+    var btn=document.getElementById('contactSubmit'),st=document.getElementById('contactStatus');
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var d=new FormData(f);
+      st.textContent='';st.className='contact-status';
+      btn.disabled=true;btn.textContent='Sending…';
+      fetch('${SB_URL}/rest/v1/rpc/submit_contact_message',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','apikey':'${SB_ANON}','Authorization':'Bearer ${SB_ANON}'},
+        body:JSON.stringify({p_name:d.get('name'),p_email:d.get('email'),p_message:d.get('message'),p_phone:d.get('phone')||null,p_hp:d.get('company')||''})
+      }).then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j};});})
+        .then(function(res){
+          if(res.ok){f.reset();st.textContent='Thanks — we got your message and will reply to your email soon.';st.className='contact-status ok';}
+          else{st.textContent=(res.j&&res.j.message)||'Something went wrong. Please email support@pridepos.com.';st.className='contact-status err';}
+        }).catch(function(){st.textContent='Network error. Please email support@pridepos.com.';st.className='contact-status err';})
+        .finally(function(){btn.disabled=false;btn.textContent='Send message';});
+    });
+  })();
+  </script>`
 });
 
 // ── Blog: data-driven. Each entry generates its own article page AND a card on /blog/. ──

@@ -53,6 +53,7 @@ export const NAV = `<header class="nav">
       <a href="/solutions/cycle-shops/">For Cycle Shops</a>
       <a href="/pricing/">Pricing</a>
       <a href="/blog/">Blog</a>
+      <a href="/contact/">Contact</a>
       <a class="nav-m-cta" href="https://app.pridepos.com/">Sign in</a>
       <a class="nav-m-cta primary" href="https://app.pridepos.com/?signup=1">Start free</a>
     </nav>
@@ -84,14 +85,15 @@ export const FOOTER = `<footer class="footer">
       </ul></div>
       <div><h4>Company</h4><ul>
         <li><a href="/blog/">Blog</a></li>
-        <li><a href="mailto:hello@pridepos.com">hello@pridepos.com</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="mailto:support@pridepos.com">support@pridepos.com</a></li>
         <li><a href="/terms.html">Terms</a></li>
         <li><a href="/privacy.html">Privacy</a></li>
       </ul></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Pride POS. Made in India 🇮🇳</span>
-      <span class="mono">hello@pridepos.com</span>
+      <span class="mono">support@pridepos.com</span>
     </div>
   </div>
 </footer>
