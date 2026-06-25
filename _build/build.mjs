@@ -13,7 +13,7 @@ const ORG = { "@type": "Organization", "@id": "https://pridepos.com/#org", "name
 const featureLD = (name, desc, url) => ({
   "@type": "SoftwareApplication", name: "Pride POS", applicationCategory: "BusinessApplication",
   operatingSystem: "Web, Android, iOS, Windows, macOS", description: desc, url,
-  offers: { "@type": "Offer", price: "499", priceCurrency: "INR" }
+  offers: { "@type": "Offer", price: "399", priceCurrency: "INR" }
 });
 const faqLD = (items) => ({ "@type": "FAQPage", mainEntity: items.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) });
 const faqHtml = (items) => `<div class="faq">${items.map(([q, a], i) => `<details${i === 0 ? " open" : ""}><summary>${q}</summary><p>${a}</p></details>`).join("")}</div>`;
@@ -153,8 +153,8 @@ PAGES.push({
   <div class="stats">
     <div class="stat"><b>7</b><span>capability areas</span></div>
     <div class="stat"><b>60+</b><span>built-in features</span></div>
-    <div class="stat"><b>₹499</b><span>all included / month</span></div>
-    <div class="stat"><b>0</b><span>add-ons to buy</span></div>
+    <div class="stat"><b>₹399</b><span>plans start / month</span></div>
+    <div class="stat"><b>5-day</b><span>free trial, no card</span></div>
   </div>
 </div></section>
 ${FEATURE_GROUPS.map((g, gi) => `<section class="section ${gi % 2 ? "paper2" : ""}"><div class="container">
@@ -173,7 +173,7 @@ ${FEATURE_GROUPS.map((g, gi) => `<section class="section ${gi % 2 ? "paper2" : "
 </div></section>`).join("\n")}
 <section class="section"><div class="container">
   <div class="sh center"><span class="eyebrow">How it compares</span><h2>Why shops switch to Pride POS.</h2>
-    <p class="lede">Honest look at how Pride POS stacks up against Tally, Marg and generic billing apps — cloud-native, online or offline, on any device, for one flat ₹499/month.</p></div>
+    <p class="lede">Honest look at how Pride POS stacks up against Tally, Marg and generic billing apps — cloud-native, online or offline, on any device, with simple monthly plans from ₹399.</p></div>
   ${comparisonTable(
     ["Tally", "Marg", "Generic billing app", "Pride POS"],
     [
@@ -195,7 +195,7 @@ ${FEATURE_GROUPS.map((g, gi) => `<section class="section ${gi % 2 ? "paper2" : "
       ["Thermal + cash drawer", "Partial", true, true, true],
       ["Audit trail (tamper-proof)", "Partial", "Partial", "Partial", true],
       ["Free trial, no card", false, false, "Limited", "5 days"],
-      ["Price", "License + AMC", "License + AMC", "Per-bill / tiers", "₹499/mo flat"],
+      ["Price", "License + AMC", "License + AMC", "Per-bill / tiers", "From ₹399/mo"],
     ]
   )}
   <p class="cmp-note">Comparison reflects typical offerings of each category, not any specific product version. Tally and Marg are trademarks of their respective owners; Pride POS is independent and not affiliated with either.</p>
@@ -269,7 +269,7 @@ ${cardsSec("How multi-shop works", "Independent outlets, one source of truth.", 
 </div></section>
 <section class="section paper2"><div class="container" style="max-width:820px"><div class="sh center"><span class="eyebrow">Questions</span><h2>Multi-shop FAQ</h2></div>
 ${faqHtml([
-    ["Is multi-shop included in the ₹499 plan?", "Yes. Unlimited outlets are part of the single Business plan — there is no per-store surcharge."],
+    ["Which plan do I need for multiple shops?", "The Multi-shop plan at ₹1,199/month covers unlimited outlets with per-shop stock and transfers — one flat price for the whole chain, with no per-store surcharge. The Standard and Pro plans run a single shop."],
     ["Can each shop have its own GSTIN and address?", "Yes. Each outlet carries its own name, address, GSTIN and UPI details, and files GST under its own number."],
     ["Can staff be restricted to one branch?", "Yes. Staff can be locked to a single outlet for billing and inventory, while the owner can switch between all shops."],
   ])}
@@ -360,37 +360,49 @@ PAGES.push(solution({
 // ── Pricing page ────────────────────────────────────────────────────────
 PAGES.push({
   out: "pricing/index.html",
-  title: "Pricing — Pride POS GST Billing Software (₹499/month)",
-  description: "Simple, honest pricing: one Business plan at ₹499/month with unlimited bills, items, customers and outlets. 5-day free trial, no card required.",
-  keywords: "Pride POS pricing, GST billing software price, billing software cost India, cheap POS software",
+  title: "Pricing — Pride POS GST Billing Software (from ₹399/month)",
+  description: "Simple, honest pricing: Standard ₹399, Pro ₹799, and Multi-shop ₹1,199 per month. 5-day free trial, no card required. Prices exclude government GST.",
+  keywords: "Pride POS pricing, GST billing software price, billing software cost India, cheap POS software, multi shop billing price",
   crumb: [{ name: "Home", path: "/" }, { name: "Pricing", path: "/pricing/" }],
   extraLD: [
-    { "@type": "Product", name: "Pride POS Business", description: "GST billing & POS software for Indian shops.", brand: { "@type": "Brand", name: "Pride POS" }, offers: { "@type": "Offer", price: "499", priceCurrency: "INR", priceValidUntil: "2027-12-31", availability: "https://schema.org/InStock", url: "https://pridepos.com/pricing/" } },
+    { "@type": "Product", name: "Pride POS", description: "GST billing & POS software for Indian shops.", brand: { "@type": "Brand", name: "Pride POS" }, offers: [
+      { "@type": "Offer", name: "Standard",   price: "399",  priceCurrency: "INR", priceValidUntil: "2027-12-31", availability: "https://schema.org/InStock", url: "https://pridepos.com/pricing/" },
+      { "@type": "Offer", name: "Pro",        price: "799",  priceCurrency: "INR", priceValidUntil: "2027-12-31", availability: "https://schema.org/InStock", url: "https://pridepos.com/pricing/" },
+      { "@type": "Offer", name: "Multi-shop", price: "1199", priceCurrency: "INR", priceValidUntil: "2027-12-31", availability: "https://schema.org/InStock", url: "https://pridepos.com/pricing/" },
+    ] },
     faqLD([
-      ["Is there a free trial?", "Yes — 5 days of full access with no credit card required. Your data carries over if you upgrade."],
-      ["Are there any per-bill or setup charges?", "No. ₹499/month is the whole cost — unlimited bills, items, customers, staff and outlets."],
+      ["Is there a free trial?", "Yes — 5 days of full access to every feature with no credit card required. Your data carries over if you upgrade."],
+      ["What's the difference between the plans?", "Standard (₹399/mo) covers billing and GST for a single shop. Pro (₹799/mo) adds every advanced feature — UPI payments, loyalty, the Owner Trust dashboard and more. Multi-shop (₹1,199/mo) is Pro across unlimited outlets with per-shop stock and transfers."],
+      ["Are GST charges included in the price?", "No. The plan price is for the software only; any GST levied by the government is charged separately as applicable."],
       ["Can I cancel anytime?", "Yes. Cancel whenever you like; your account pauses and data is kept for 30 days so you can resume."],
     ])
   ],
   body: ({ cr }) => `<section class="hero"><div class="container center" style="max-width:760px;margin:0 auto"><div class="reveal">
-    <span class="eyebrow">Honest pricing</span><h1>One plan. <span class="hl">Everything in.</span></h1>
-    <p class="lede" style="margin:0 auto">No tiers hiding the features you need. No per-bill charges. Just one fair price for the whole business.</p>
+    <span class="eyebrow">Honest pricing</span><h1>Pick the plan that <span class="hl">fits your shop.</span></h1>
+    <p class="lede" style="margin:0 auto">No per-bill charges, no setup fees. Start free for 5 days, then choose a plan — upgrade or downgrade anytime.</p>
   </div></div></section>
   <section class="section tight"><div class="container">${cr.html}
-  <div class="price-grid">
-    <div class="price reveal"><div class="tier">Free trial</div><div class="amt">₹0 <small>/ 5 days</small></div>
-      <p style="color:var(--ink-3);font-size:.95rem">Full access. No card. See if it fits your shop.</p>
-      <ul><li>Every feature unlocked</li><li>Unlimited bills &amp; items</li><li>Your real data, kept if you upgrade</li><li>Email support</li></ul>
+  <div class="price-grid three">
+    <div class="price reveal"><div class="tier">Standard</div><div class="amt">₹399 <small>/ month</small></div>
+      <p style="color:var(--ink-3);font-size:.95rem">Billing &amp; GST essentials for a single shop.</p>
+      <ul><li>Unlimited bills, items &amp; customers</li><li>GST invoicing + GSTR-1 / GSTR-3B</li><li>E-invoice IRN where applicable</li><li>Thermal &amp; A4 printing</li><li>Offline billing &amp; auto-sync</li><li>Email support</li></ul>
       <a class="btn ink" href="https://app.pridepos.com/?signup=1" style="width:100%;justify-content:center">Start free trial</a></div>
-    <div class="price feature reveal" style="animation-delay:.08s"><span class="pill">Best value</span><div class="tier">Business</div><div class="amt">₹499 <small>/ month</small></div>
-      <p style="color:var(--ink-3);font-size:.95rem">Everything you need to run a real shop.</p>
-      <ul><li>Unlimited bills, items, customers</li><li>Unlimited outlets &amp; staff</li><li>GST returns + e-invoice IRN</li><li>Integrated UPI payments</li><li>Offline billing &amp; auto-sync</li><li>Thermal &amp; A4 printing</li><li>Priority support</li></ul>
+    <div class="price feature reveal" style="animation-delay:.08s"><span class="pill">Most popular</span><div class="tier">Pro</div><div class="amt">₹799 <small>/ month</small></div>
+      <p style="color:var(--ink-3);font-size:.95rem">Every feature, for one shop.</p>
+      <ul><li>Everything in Standard</li><li>Integrated UPI / QR payments</li><li>Loyalty, estimates &amp; purchase orders</li><li>Owner Trust fraud dashboard</li><li>Predictive reorder forecast</li><li>Staff controls &amp; audit</li><li>Priority support</li></ul>
       <a class="btn primary" href="https://app.pridepos.com/?signup=1" style="width:100%;justify-content:center">Start free trial</a></div>
-  </div></div></section>
+    <div class="price reveal" style="animation-delay:.16s"><div class="tier">Multi-shop</div><div class="amt">₹1,199 <small>/ month</small></div>
+      <p style="color:var(--ink-3);font-size:.95rem">All Pro features, across every outlet.</p>
+      <ul><li>Everything in Pro</li><li>Unlimited outlets &amp; central godown</li><li>Per-shop stock + stock transfers</li><li>Per-shop &amp; consolidated reports</li><li>Shop-scoped staff roles</li></ul>
+      <a class="btn ink" href="https://app.pridepos.com/?signup=1" style="width:100%;justify-content:center">Start free trial</a></div>
+  </div>
+  <p class="price-note">Every plan starts with a 5-day free trial — no card required. Prices are per month and <strong>exclude GST</strong> charged by the government.</p>
+  </div></section>
   <section class="section paper2"><div class="container" style="max-width:820px"><div class="sh center"><span class="eyebrow">Questions</span><h2>Pricing FAQ</h2></div>
   ${faqHtml([
-    ["Is there a free trial?", "Yes — 5 days of full access with no credit card required. Your data carries over if you upgrade."],
-    ["Are there any per-bill or setup charges?", "No. ₹499/month is the whole cost — unlimited bills, items, customers, staff and outlets."],
+    ["Is there a free trial?", "Yes — 5 days of full access to every feature with no credit card required. Your data carries over if you upgrade."],
+    ["What's the difference between the plans?", "Standard (₹399/mo) covers billing and GST for a single shop. Pro (₹799/mo) adds every advanced feature — UPI payments, loyalty, the Owner Trust dashboard and more. Multi-shop (₹1,199/mo) is Pro across unlimited outlets with per-shop stock and transfers."],
+    ["Are GST charges included in the price?", "No. The plan price is for the software only; any GST levied by the government is charged separately as applicable."],
     ["Can I cancel anytime?", "Yes. Cancel whenever you like; your account pauses and your data is kept for 30 days so you can resume."],
     ["How do I pay?", "Securely online via Razorpay — UPI, cards or net banking. Billing is monthly and you can stop anytime."],
   ])}</div></section>

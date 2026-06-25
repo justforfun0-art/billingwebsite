@@ -183,7 +183,10 @@ a.card:hover .card-more { text-decoration: underline; }
 
 /* Pricing */
 .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 760px; margin: 0 auto; }
+.price-grid.three { grid-template-columns: 1fr 1fr 1fr; max-width: 1040px; }
+@media (max-width: 940px) { .price-grid.three { grid-template-columns: 1fr; max-width: 460px; } }
 @media (max-width: 660px) { .price-grid { grid-template-columns: 1fr; } }
+.price-note { max-width: 1040px; margin: 18px auto 0; text-align: center; font-size: .9rem; color: var(--ink-3); }
 .price { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--r-xl); padding: 30px; position: relative; }
 .price.feature { border: 2px solid var(--ink); box-shadow: var(--shadow-md); }
 .price .tier { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .12em; font-size: .76rem; color: var(--ink-3); }
