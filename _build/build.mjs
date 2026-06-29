@@ -385,7 +385,7 @@ PAGES.push({
   <div class="price-grid three">
     <div class="price reveal"><div class="tier">Standard</div><div class="amt">₹399 <small>/ month</small></div>
       <p style="color:var(--ink-3);font-size:.95rem">Billing &amp; GST essentials for a single shop.</p>
-      <ul><li>Unlimited bills, items &amp; customers</li><li>GST invoicing + GSTR-1 / GSTR-3B</li><li>E-invoice IRN where applicable</li><li>Thermal &amp; A4 printing</li><li>Offline billing &amp; auto-sync</li><li>Email support</li></ul>
+      <ul><li>Unlimited bills, items &amp; customers</li><li>GST invoicing + GSTR-1 / GSTR-3B</li><li>E-invoice IRN <em>(coming soon)</em></li><li>Thermal &amp; A4 printing</li><li>Offline billing &amp; auto-sync</li><li>Email support</li></ul>
       <a class="btn ink" href="https://app.pridepos.com/?signup=1" style="width:100%;justify-content:center">Start free trial</a></div>
     <div class="price feature reveal" style="animation-delay:.08s"><span class="pill">Most popular</span><div class="tier">Pro</div><div class="amt">₹799 <small>/ month</small></div>
       <p style="color:var(--ink-3);font-size:.95rem">Every feature, for one shop.</p>
